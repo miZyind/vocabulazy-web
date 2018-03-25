@@ -1,3 +1,5 @@
+![VocabuLazy](https://github.com/miZyind/vocabulazy/blob/assets/banner.png)
+
 # VocabuLazy
 
 [![Frontend](https://img.shields.io/badge/Frontend-React-008BB8.svg?style=flat-square)](https://facebook.github.io/react)
