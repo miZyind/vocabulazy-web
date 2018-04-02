@@ -2,10 +2,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-  Menu,
-  MenuItemProps,
-  Sidebar,
-  Image,
   Input,
   Button,
   Header,
@@ -13,101 +9,65 @@ import {
   Segment
 } from 'semantic-ui-react';
 import styled from 'styled-components';
-import {
-  MenuItemNormal
-} from './style';
+import { hot } from 'react-hot-loader';
+// Components
+import TopMenu from '../top-menu';
 
-interface ILandingPageProps {
+interface IProps {
   // TODO:
 }
 
-interface ILandingPageState {
-  isMobile: boolean;
-  activeItem?: string;
+interface IState {
+  // TODO:
 }
 
-class LandingPage extends React.Component<ILandingPageProps, ILandingPageState> {
-  constructor(props: ILandingPageProps) {
+class LandingPage extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
-    this.state = {
-      isMobile: false
-    };
   }
 
   public render() {
-    const { activeItem } = this.state;
-
     return (
       <div>
-        <Sidebar as={Menu} secondary direction='top' visible style={{
-          'backgroundColor': '#1abc9c',
-        }}>
-          <Menu.Item>
-            <Image src='/favicon.ico' style={{
-              'height': '21px',
-              'width': '21px',
-              'margin': '.25em'
-            }} />
-            <span style={{ 'color': 'white' }}>VocabuLazy</span>
-          </Menu.Item>
-          <Menu.Item name='search'>
-            <Button primary icon='search' labelPosition='left' content='搜尋單字' />
-          </Menu.Item>
-          <Menu.Menu position='right'>
-            <MenuItemNormal
-              name='forum'
-              active={activeItem === 'forum'}
-              onClick={this.handleItemClick}
-              children='學習論壇'
-            />
-            <MenuItemNormal
-              name='vocabulary'
-              active={activeItem === 'vocabulary'}
-              onClick={this.handleItemClick}
-              children='發燒單字'
-            />
-            <MenuItemNormal
-              name='note'
-              active={activeItem === 'note'}
-              onClick={this.handleItemClick}
-              children='我的筆記'
-            />
-            <MenuItemNormal
-              name='login'
-              active={activeItem === 'login'}
-              onClick={this.handleItemClick}
-              children='登入'
-            />
-            <MenuItemNormal
-              name='register'
-              active={activeItem === 'register'}
-              onClick={this.handleItemClick}
-              style={{ 'backgroundColor': '#434a54', 'color': 'white' }}
-              children='註冊'
-            />
-          </Menu.Menu>
-        </Sidebar>
+        <TopMenu />
         <Container text style={{ 'marginTop': '7em' }}>
           <Header as='h1' textAlign='center'>
             VocabuLazy
           </Header>
-          <Header as='h2' textAlign='center'>
+          <Header as='h2' textAlign='center' style={{ 'fontFamily': 'PingFangTC-Medium' }}>
             世界最好用的單字軟體
-            <Header.Subheader>讓你自由決定想背的單字</Header.Subheader>
+            <Header.Subheader style={{ 'fontFamily': 'PingFangTC-Medium' }}>讓你自由決定想背的單字</Header.Subheader>
           </Header>
-          <Segment textAlign='center' attached='top' compact>
-            <Button>開始使用</Button>
+          <Segment textAlign='center' attached='top' compact style={{ 'border': 'none' }}>
+            <Button style={{ 'backgroundColor': '#9b9b9b', 'border': 'solid 1px #979797' }}>開始使用</Button>
           </Segment>
+          <Segment textAlign='right' attached='top' compact style={{ 'border': 'none' }}>
+            <Button icon='google' labelPosition='left' style={{ 'backgroundColor': '#9b9b9b', 'border': 'solid 1px #979797' }} content='Google Play' />
+            <Button icon='apple' labelPosition='left' style={{ 'backgroundColor': '#9b9b9b', 'border': 'solid 1px #979797' }} content='App Store' />
+          </Segment>
+        </Container>
+        <Container text>
+          <Header as='h1' textAlign='center'>
+            全新研發背誦模式
+          </Header>
+          <Header as='h1' textAlign='center'>
+            讓你通勤也能專心學習
+          </Header>
+          <Header>
+            <Header.Subheader>
+              讓你自由決定想背的東西
+            </Header.Subheader>
+          </Header>
+          <Header>
+            <Header.Subheader>
+              讓你自由決定想背的東西
+              成績永遠好棒棒
+            </Header.Subheader>
+          </Header>
         </Container>
       </div>
     );
   }
-
-  private handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, { name }: MenuItemProps) => {
-    this.setState({ activeItem: name! });
-  }
 }
 
-export default styled(LandingPage) `
-  font-family: 'PingFangTC-Medium';
-`;
+export default hot(module)(LandingPage);
