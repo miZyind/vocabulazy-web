@@ -34,24 +34,10 @@ export const StyledSidebar: React.ComponentClass<SidebarProps> = styled(Sidebar)
       border-radius: 0;
       background-color: unset;
     }
-    .login-button {
-      color: black;
-      font-weight: 500;
-      border-radius: 0;
-      background-color: #E0E1E2;
-      &:hover {
-        color: white;
-        background-color: #434A54;
-      }
-    }
-    .register-button {
-      color: white;
-      font-weight: 500;
-      border-radius: 0;
-      background-color: #434A54;
-      &:hover {
-        color: black;
-        background-color: #E0E1E2;
+    .control {
+      button {
+        font-weight: 500;
+        border-radius: 0;
       }
     }
   }

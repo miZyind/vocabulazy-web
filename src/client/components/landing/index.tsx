@@ -30,7 +30,7 @@ class LandingPage extends React.Component<IProps, IState> {
     return (
       <div>
         <TopMenu />
-        <Container text style={{ 'marginTop': '7em' }}>
+        {/* <Container text style={{ 'marginTop': '7em' }}>
           <Header as='h1' textAlign='center'>
             VocabuLazy
           </Header>
@@ -64,7 +64,7 @@ class LandingPage extends React.Component<IProps, IState> {
               成績永遠好棒棒
             </Header.Subheader>
           </Header>
-        </Container>
+        </Container> */}
       </div>
     );
   }
