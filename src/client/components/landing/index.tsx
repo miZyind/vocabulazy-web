@@ -11,6 +11,7 @@ import {
 import styled from 'styled-components';
 import { hot } from 'react-hot-loader';
 // Components
+import Menu from '../menu';
 import TopMenu from '../top-menu';
 
 interface IProps {
@@ -29,7 +30,8 @@ class LandingPage extends React.Component<IProps, IState> {
   public render() {
     return (
       <div>
-        <TopMenu />
+        <Menu />
+        {/* <TopMenu /> */}
         {/* <Container text style={{ 'marginTop': '7em' }}>
           <Header as='h1' textAlign='center'>
             VocabuLazy

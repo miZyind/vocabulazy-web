@@ -44,9 +44,9 @@ class TopMenu extends React.Component<IProps, IState> {
 
     return (
       <div>
-        <Grid className={className} as={Menu} attached='top' >
-          <Grid.Column only='tablet mobile' width='16' style={{ padding: 'unset' }}>
-            <Grid as={Menu} inverted borderless>
+        <Grid className={className} as={Menu} attached='top'>
+          <Grid.Column only='tablet mobile' width='16' style={{ padding: 'unset', backgroundColor: '#1ABC9C' }}>
+            <Grid as={Menu} inverted borderless style={{ backgroundColor: '#1ABC9C' }}>
               <Grid.Column as={Menu.Item} width='2' onClick={this.onClick} stretched style={{ flexDirection: 'unset' }}>
                 <Icon name='sidebar' />
               </Grid.Column>
@@ -56,7 +56,7 @@ class TopMenu extends React.Component<IProps, IState> {
               </Grid.Column>
             </Grid>
           </Grid.Column>
-          <Grid.Column only='computer' as={Menu} width='16' style={{ padding: 'unset' }} inverted>
+          <Grid.Column only='computer' as={Menu} width='16' style={{ padding: 'unset', backgroundColor: '#1ABC9C' }} inverted>
             <Menu.Item
               name='home'
               active={activeItem === 'home'}
@@ -95,7 +95,7 @@ class TopMenu extends React.Component<IProps, IState> {
               >
                 <Button icon='edit' className='normal-button' content='我的筆記' compact />
               </Menu.Item>
-              <Menu.Item className='control'>
+              <Menu.Item className='control' >
                 <Button icon='sign in' color='blue' content='登入' />
                 <Button icon='add user' color='orange' content='註冊' />
               </Menu.Item>
@@ -104,21 +104,20 @@ class TopMenu extends React.Component<IProps, IState> {
         </Grid>
         <Sidebar.Pushable>
           <Sidebar as={Menu} animation='push' width='thin' icon='labeled' vertical inverted visible={visible}>
-            <Menu.Item name='home'>
-              <Icon name='home' />
-              Home
+            <Menu.Item name='forum'>
+              <Icon name='comments' />
+              學習論壇
             </Menu.Item>
-            <Menu.Item name='gamepad'>
-              <Icon name='gamepad' />
-              Games
+            <Menu.Item name='vocabulary'>
+              <Icon name='fire' />
+              發燒單字
             </Menu.Item>
-            <Menu.Item name='camera'>
-              <Icon name='camera' />
-              Channels
+            <Menu.Item name='note'>
+              <Icon name='edit' />
+              我的筆記
             </Menu.Item>
           </Sidebar>
           <Sidebar.Pusher style={{ height: '100vh' }}>
-            123
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>
