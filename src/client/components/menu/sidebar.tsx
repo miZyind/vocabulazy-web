@@ -1,9 +1,16 @@
 // Node module
 import React from 'react';
 import styled from 'styled-components';
-import { Sidebar as SidebarSrc, Icon, Menu, Button } from 'semantic-ui-react';
+import { Sidebar as SidebarSrc, Icon, Menu, MenuItemProps, Button } from 'semantic-ui-react';
 
-const Sidebar = ({ className, sideBarVisible, activeItem, onClick }: any) => (
+interface ISidebarProps {
+  className?: string;
+  sideBarVisible: boolean;
+  activeItem: string;
+  setActiveItem: MenuItemProps['onClick'];
+}
+
+const Sidebar = ({ className, sideBarVisible, activeItem, setActiveItem }: ISidebarProps) => (
   <SidebarSrc
     className={className}
     as={Menu}
@@ -12,16 +19,17 @@ const Sidebar = ({ className, sideBarVisible, activeItem, onClick }: any) => (
     icon='labeled'
     vertical
     inverted
-    visible={sideBarVisible}>
-    <Menu.Item name='forum' active={activeItem === 'forum'}  onClick={onClick}>
+    visible={sideBarVisible}
+    borderless>
+    <Menu.Item name='forum' active={activeItem === 'forum'}  onClick={setActiveItem}>
       <Icon name='comments' />
       學習論壇
     </Menu.Item>
-    <Menu.Item name='vocabulary' active={activeItem === 'vocabulary'}  onClick={onClick}>
+    <Menu.Item name='vocabulary' active={activeItem === 'vocabulary'}  onClick={setActiveItem}>
       <Icon name='fire' />
       發燒單字
     </Menu.Item>
-    <Menu.Item name='note' active={activeItem === 'note'}  onClick={onClick}>
+    <Menu.Item name='note' active={activeItem === 'note'}  onClick={setActiveItem}>
       <Icon name='edit' />
       我的筆記
     </Menu.Item>
@@ -32,7 +40,7 @@ const Sidebar = ({ className, sideBarVisible, activeItem, onClick }: any) => (
   </SidebarSrc>
 );
 
-const StyledSidebar: React.ComponentClass<any> = styled(Sidebar) `
+export default styled(Sidebar) `
   &&&& {
     .menu-button {
       font-weight: 500;
@@ -40,5 +48,3 @@ const StyledSidebar: React.ComponentClass<any> = styled(Sidebar) `
     }
   }
 `;
-
-export default StyledSidebar;

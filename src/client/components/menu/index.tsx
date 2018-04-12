@@ -1,55 +1,85 @@
 // Node module
 import React from 'react';
 import styled from 'styled-components';
+import { Bind, Throttle } from 'lodash-decorators';
 import { Grid, Menu as MenuSrc, SidebarPushable, SidebarPusher, Icon } from 'semantic-ui-react';
 // Component
 import Sidebar from './sidebar';
-import MobileMenu from './mobile';
-import DesktopMenu from './desktop';
+import MobileMenu from './mobile-menu';
+import DesktopMenu from './desktop-menu';
 
-class Menu extends React.Component<any, any> {
+interface IMenuProps {
+  className?: string;
+}
+
+interface IMenuState {
+  activeItem: string;
+  sideBarVisible: boolean;
+  isMobileDisplay: boolean;
+}
+
+class Menu extends React.Component<IMenuProps, IMenuState> {
+  private readonly mobileDisplayUpperBound = 992;
+
   constructor(props: any) {
     super(props);
     this.state = {
       activeItem: 'home',
-      sideBarVisible: false
+      sideBarVisible: false,
+      isMobileDisplay: window.innerWidth < this.mobileDisplayUpperBound
     };
+  }
+
+  public componentWillMount() {
+    window.addEventListener('resize', this.detectDisplay);
+  }
+
+  public componentWillUnmount() {
+    window.removeEventListener('resize', this.detectDisplay);
   }
 
   public render() {
     const { className } = this.props;
-    const { activeItem, sideBarVisible } = this.state;
+    const { isMobileDisplay, activeItem, sideBarVisible } = this.state;
     return (
       <div>
         <Grid className={className} as={MenuSrc} attached='top'>
-          <MobileMenu
-            toggleSidebar={this.toggleSidebar}
-            openSearchPanel={this.openSearchPanel} />
-          <DesktopMenu activeItem={activeItem} onClick={this.setActiveItem} />
+          {isMobileDisplay
+            ? <MobileMenu toggleSidebar={this.toggleSidebar} openSearchPanel={this.openSearchPanel} />
+            : <DesktopMenu activeItem={activeItem} setActiveItem={this.setActiveItem} />
+          }
         </Grid>
         <SidebarPushable>
           <Sidebar
-            sideBarVisible={sideBarVisible}
             activeItem={activeItem}
-            onClick={this.setActiveItem} />
+            setActiveItem={this.setActiveItem}
+            sideBarVisible={isMobileDisplay && sideBarVisible} />
           <SidebarPusher style={{ height: '100vh' }} />
         </SidebarPushable>
       </div>
     );
   }
 
-  private setActiveItem = (e: any, { name }: any) => {
+  @Bind
+  private setActiveItem(e: any, { name }: any) {
     this.setState({ activeItem: name });
   }
 
-  private openSearchPanel = () => {
+  @Bind
+  private openSearchPanel() {
     // TODO:
   }
 
-  private toggleSidebar = () => {
+  @Bind
+  private toggleSidebar() {
     this.setState({ sideBarVisible: !this.state.sideBarVisible });
   }
 
+  @Bind
+  @Throttle(500, { leading: false })
+  private detectDisplay() {
+    this.setState({ isMobileDisplay: window.innerWidth < this.mobileDisplayUpperBound });
+  }
 }
 
 export default styled(Menu) `

@@ -1,18 +1,19 @@
 // Node module
 import React from 'react';
 import styled from 'styled-components';
-import { Grid, Menu, Button } from 'semantic-ui-react';
+import { Grid, Menu, MenuItemProps, Button } from 'semantic-ui-react';
 // Component
 import Logo from './logo';
 
-const DesktopMenu = ({ className, activeItem, onClick }: any) => (
-  <Grid.Column
-    className={className}
-    only='computer'
-    as={Menu}
-    width='16'
-    inverted>
-    <Menu.Item name='home' active={activeItem === 'home'} onClick={onClick}>
+interface IDesktopMenuProps {
+  className?: string;
+  activeItem: string;
+  setActiveItem: MenuItemProps['onClick'];
+}
+
+const DesktopMenu = ({ className, activeItem, setActiveItem }: IDesktopMenuProps) => (
+  <Grid.Column className={className} as={Menu} width='16' inverted borderless>
+    <Menu.Item name='home' active={activeItem === 'home'} onClick={setActiveItem}>
       <Logo />
     </Menu.Item>
     <Menu.Item name='search'>
@@ -24,13 +25,13 @@ const DesktopMenu = ({ className, activeItem, onClick }: any) => (
         color='black' />
     </Menu.Item>
     <Menu.Menu position='right'>
-      <Menu.Item name='forum' active={activeItem === 'forum'} onClick={onClick}>
+      <Menu.Item name='forum' active={activeItem === 'forum'} onClick={setActiveItem}>
         <Button icon='comments' className='menu-button normal-button' content='學習論壇' compact />
       </Menu.Item>
-      <Menu.Item name='vocabulary' active={activeItem === 'vocabulary'} onClick={onClick}>
+      <Menu.Item name='vocabulary' active={activeItem === 'vocabulary'} onClick={setActiveItem}>
         <Button icon='fire' className='menu-button normal-button' content='發燒單字' compact />
       </Menu.Item>
-      <Menu.Item name='note' active={activeItem === 'note'} onClick={onClick}>
+      <Menu.Item name='note' active={activeItem === 'note'} onClick={setActiveItem}>
         <Button icon='edit' className='menu-button normal-button' content='我的筆記' compact />
       </Menu.Item>
       <Menu.Item>
@@ -41,7 +42,7 @@ const DesktopMenu = ({ className, activeItem, onClick }: any) => (
   </Grid.Column>
 );
 
-const StyledDesktopMenu: React.ComponentClass<any> = styled(DesktopMenu) `
+export default styled(DesktopMenu) `
   &&&& {
     padding: unset;
     border-radius: unset;
@@ -61,5 +62,3 @@ const StyledDesktopMenu: React.ComponentClass<any> = styled(DesktopMenu) `
     }
   }
 `;
-
-export default StyledDesktopMenu;
