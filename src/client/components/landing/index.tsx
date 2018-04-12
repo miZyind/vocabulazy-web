@@ -1,18 +1,11 @@
 // Node module
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  Input,
-  Button,
-  Header,
-  Container,
-  Segment
-} from 'semantic-ui-react';
+import { } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { hot } from 'react-hot-loader';
 // Components
 import Menu from '../menu';
-import TopMenu from '../top-menu';
 
 interface IProps {
   // TODO:
@@ -31,7 +24,6 @@ class LandingPage extends React.Component<IProps, IState> {
     return (
       <div>
         <Menu />
-        {/* <TopMenu /> */}
         {/* <Container text style={{ 'marginTop': '7em' }}>
           <Header as='h1' textAlign='center'>
             VocabuLazy
