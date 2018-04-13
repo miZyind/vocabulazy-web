@@ -1,6 +1,11 @@
 import 'styled-components';
 declare module 'styled-components' {
-  interface ThemedBaseStyledInterface<T> {
-    <P extends { [prop: string]: any; theme?: T }>(component: React.ComponentType<P>): ThemedStyledFunction<P, T, Exclude<P, 'theme'>>;
+  type ThemedStyledComponentFactories<T> = {
+    [TTag in keyof JSX.IntrinsicElements]: ThemedStyledFunction<JSX.IntrinsicElements[TTag], T>;
+  };
+  // Helper type operators
+  type WithOptionalTheme<P extends { theme?: T; }, T> = Pick<P, Exclude<keyof P, "theme">> & { theme?: T; };
+  interface ThemedBaseStyledInterface<T> extends ThemedStyledComponentFactories<T> {
+    <P>(component: React.ComponentType<P>): T extends undefined ? StyledFunction<P> : ThemedStyledFunction<P, T, WithOptionalTheme<P, T>>;
   }
 }
