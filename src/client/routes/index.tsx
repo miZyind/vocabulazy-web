@@ -1,30 +1,32 @@
+// Node module
 import React from 'react';
 import { Route, RouteProps, Switch, Redirect } from 'react-router-dom';
+// Component
+import Home from '@components/home';
+import Forum from '@components/forum';
+import Vocabulary from '@components/vocabulary';
+import Note from '@components/note';
 
 const routes: RouteProps[] = [
   {
-    // name: 'Home',
     path: '/',
     exact: true,
-    // component: Home
+    component: Home
   },
   {
-    // name: 'Forum',
     path: '/forum',
     exact: true,
-    // component: Forum
+    component: Forum
   },
   {
-    // name: 'Vocabulary',
     path: '/vocabulary',
     exact: true,
-    // component: Vocabulary
+    component: Vocabulary
   },
   {
-    // name: 'Note',
     path: '/note',
     exact: true,
-    // component: Note
+    component: Note
   }
 ];
 

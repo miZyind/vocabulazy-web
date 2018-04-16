@@ -1,6 +1,7 @@
 // Node module
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import { Sidebar as SidebarSrc, Icon, Menu, MenuItemProps, Button } from 'semantic-ui-react';
 
 interface ISidebarProps {
@@ -21,15 +22,15 @@ const Sidebar = ({ className, sideBarVisible, activeItem, setActiveItem }: ISide
     inverted
     visible={sideBarVisible}
     borderless>
-    <Menu.Item name='forum' active={activeItem === 'forum'}  onClick={setActiveItem}>
+    <Menu.Item name='forum' as={NavLink} to='/forum' active={activeItem === 'forum'} onClick={setActiveItem}>
       <Icon name='comments' />
       學習論壇
     </Menu.Item>
-    <Menu.Item name='vocabulary' active={activeItem === 'vocabulary'}  onClick={setActiveItem}>
+    <Menu.Item name='vocabulary' as={NavLink} to='/vocabulary' active={activeItem === 'vocabulary'} onClick={setActiveItem}>
       <Icon name='fire' />
       發燒單字
     </Menu.Item>
-    <Menu.Item name='note' active={activeItem === 'note'}  onClick={setActiveItem}>
+    <Menu.Item name='note' as={NavLink} to='/note' active={activeItem === 'note'} onClick={setActiveItem}>
       <Icon name='edit' />
       我的筆記
     </Menu.Item>

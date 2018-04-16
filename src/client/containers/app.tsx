@@ -1,8 +1,9 @@
 // Node module
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader';
 import { BrowserRouter as Router } from 'react-router-dom';
+// Component
+import Menu from '@components/menu';
 // Route
 import Routes from '@routes/index';
 
@@ -14,7 +15,9 @@ class App extends React.Component<any, any> {
   public render() {
     return (
       <Router>
-        <Routes />
+        <Menu>
+          <Routes />
+        </Menu>
       </Router>
     );
   }

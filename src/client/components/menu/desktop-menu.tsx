@@ -1,6 +1,7 @@
 // Node module
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import { Grid, Menu, MenuItemProps, Button } from 'semantic-ui-react';
 // Component
 import Logo from './logo';
@@ -13,7 +14,7 @@ interface IDesktopMenuProps {
 
 const DesktopMenu = ({ className, activeItem, setActiveItem }: IDesktopMenuProps) => (
   <Grid.Column className={className} as={Menu} width='16' inverted borderless>
-    <Menu.Item name='home' active={activeItem === 'home'} onClick={setActiveItem}>
+    <Menu.Item name='home' as={NavLink} to='/home' active={activeItem === 'home'} onClick={setActiveItem}>
       <Logo />
     </Menu.Item>
     <Menu.Item name='search'>
@@ -25,13 +26,13 @@ const DesktopMenu = ({ className, activeItem, setActiveItem }: IDesktopMenuProps
         color='black' />
     </Menu.Item>
     <Menu.Menu position='right'>
-      <Menu.Item name='forum' active={activeItem === 'forum'} onClick={setActiveItem}>
+      <Menu.Item name='forum' as={NavLink} to='/forum' active={activeItem === 'forum'} onClick={setActiveItem}>
         <Button icon='comments' className='menu-button normal-button' content='學習論壇' compact />
       </Menu.Item>
-      <Menu.Item name='vocabulary' active={activeItem === 'vocabulary'} onClick={setActiveItem}>
+      <Menu.Item name='vocabulary' as={NavLink} to='/vocabulary' active={activeItem === 'vocabulary'} onClick={setActiveItem}>
         <Button icon='fire' className='menu-button normal-button' content='發燒單字' compact />
       </Menu.Item>
-      <Menu.Item name='note' active={activeItem === 'note'} onClick={setActiveItem}>
+      <Menu.Item name='note' as={NavLink} to='/note' active={activeItem === 'note'} onClick={setActiveItem}>
         <Button icon='edit' className='menu-button normal-button' content='我的筆記' compact />
       </Menu.Item>
       <Menu.Item>

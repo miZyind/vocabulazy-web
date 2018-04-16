@@ -42,10 +42,10 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
     const { className, children } = this.props;
     const { isMobileDisplay, activeItem, sideBarVisible } = this.state;
     return (
-      <div>
+      <>
         <Grid className={className} as={MenuSrc} attached='top'>
           {isMobileDisplay
-            ? <MobileMenu toggleSidebar={this.toggleSidebar} openSearchPanel={this.openSearchPanel} />
+            ? <MobileMenu toggleSidebar={this.toggleSidebar} setActiveItem={this.setActiveItem} openSearchPanel={this.openSearchPanel} />
             : <DesktopMenu activeItem={activeItem} setActiveItem={this.setActiveItem} />
           }
         </Grid>
@@ -56,7 +56,7 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
             sideBarVisible={isMobileDisplay && sideBarVisible} />
           <SidebarPusher children={children} />
         </SidebarPushable>
-      </div>
+      </>
     );
   }
 
@@ -87,8 +87,6 @@ export default styled(Menu) `
     border: none;
     border-radius: unset;
     border-color: #1ABC9C;
-    .ui.menu .item {
-      padding: 0.5rem;
-    }
+    .ui.menu .item { padding: 0.5rem; }
   }
 `;
