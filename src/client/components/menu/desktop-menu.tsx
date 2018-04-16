@@ -53,7 +53,7 @@ export default styled(DesktopMenu) `
     button {
       color: white;
       font-weight: 500;
-      border-radius: 0;
+      border-radius: unset;
       background-color: unset;
     }
     .search-btn {

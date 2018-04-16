@@ -20,7 +20,7 @@ const Sidebar = ({ className, sideBarVisible, activeItem, setActiveItem, login, 
     vertical
     inverted
     width='thin'
-    animation='push'
+    animation='overlay'
     visible={sideBarVisible}
     borderless>
     <Menu.Item
@@ -64,11 +64,11 @@ export default styled(Sidebar) `
     background-color: #666C78;
     .item {
       padding: 0.5rem 0;
-      border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
+      border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
     }
     button {
       font-weight: 500;
-      border-radius: 0;
+      border-radius: unset;
       color: white;
       background-color: unset;
     }

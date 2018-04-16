@@ -78,7 +78,7 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
   }
 
   @Bind
-  @Throttle(500, { leading: false })
+  // @Throttle(500, { leading: false })
   private detectDisplay() {
     this.setState({ isMobileDisplay: window.innerWidth < this.mobileDisplayUpperBound });
   }
