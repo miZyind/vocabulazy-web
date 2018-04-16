@@ -1,7 +1,7 @@
 // Node module
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { } from 'semantic-ui-react';
+import { Container, Header, Segment, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { hot } from 'react-hot-loader';
 // Components
@@ -22,9 +22,8 @@ class LandingPage extends React.Component<IProps, IState> {
 
   public render() {
     return (
-      <div>
-        <Menu />
-        {/* <Container text style={{ 'marginTop': '7em' }}>
+      <Menu>
+        <Container text style={{ 'marginTop': '7em' }}>
           <Header as='h1' textAlign='center'>
             VocabuLazy
           </Header>
@@ -58,8 +57,8 @@ class LandingPage extends React.Component<IProps, IState> {
               成績永遠好棒棒
             </Header.Subheader>
           </Header>
-        </Container> */}
-      </div>
+        </Container>
+      </Menu>
     );
   }
 }

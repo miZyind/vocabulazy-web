@@ -39,7 +39,7 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
   }
 
   public render() {
-    const { className } = this.props;
+    const { className, children } = this.props;
     const { isMobileDisplay, activeItem, sideBarVisible } = this.state;
     return (
       <div>
@@ -54,7 +54,7 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
             activeItem={activeItem}
             setActiveItem={this.setActiveItem}
             sideBarVisible={isMobileDisplay && sideBarVisible} />
-          <SidebarPusher style={{ height: '100vh' }} />
+          <SidebarPusher children={children} />
         </SidebarPushable>
       </div>
     );
