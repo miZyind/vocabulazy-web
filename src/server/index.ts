@@ -25,4 +25,6 @@ if (isDev) {
     .use(serve(appDist));
 }
 
-app.listen(appPort, () => pino.info(`${appName} v${appVersion} [Port] ${appPort} [Mode] ${isDev ? '⚙️' : '🌎'}`));
+app
+  .use(async (ctx) => { ctx.redirect('/'); })
+  .listen(appPort, () => pino.info(`${appName} v${appVersion} [Port] ${appPort} [Mode] ${isDev ? '⚙️' : '🌎'}`));
