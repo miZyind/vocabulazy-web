@@ -17,6 +17,7 @@ const baseConfig: webpack.Configuration = {
       '@helpers': paths.resolveApp('src/client/helpers'),
       '@reducers': paths.resolveApp('src/client/reducers'),
       '@routes': paths.resolveApp('src/client/routes'),
+      '@styles': paths.resolveApp('src/client/styles'),
       '#lib': paths.resolveApp('src/lib')
     },
     modules: ['node_modules', paths.nodeModules],
