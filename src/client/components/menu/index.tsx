@@ -46,14 +46,16 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
         <Grid className={className} as={MenuSrc} attached='top'>
           {isMobileDisplay
             ? <MobileMenu toggleSidebar={this.toggleSidebar} setActiveItem={this.setActiveItem} openSearchPanel={this.openSearchPanel} />
-            : <DesktopMenu activeItem={activeItem} setActiveItem={this.setActiveItem} />
+            : <DesktopMenu activeItem={activeItem} setActiveItem={this.setActiveItem} login={this.login} signup={this.signup} />
           }
         </Grid>
         <SidebarPushable>
           <Sidebar
             activeItem={activeItem}
             setActiveItem={this.setActiveItem}
-            sideBarVisible={isMobileDisplay && sideBarVisible} />
+            sideBarVisible={isMobileDisplay && sideBarVisible}
+            login={this.login}
+            signup={this.signup} />
           <SidebarPusher children={children} />
         </SidebarPushable>
       </>
@@ -79,6 +81,16 @@ class Menu extends React.Component<IMenuProps, IMenuState> {
   @Throttle(500, { leading: false })
   private detectDisplay() {
     this.setState({ isMobileDisplay: window.innerWidth < this.mobileDisplayUpperBound });
+  }
+
+  @Bind
+  private login() {
+    // TODO:
+  }
+
+  @Bind
+  private signup() {
+    // TODO:
   }
 }
 
