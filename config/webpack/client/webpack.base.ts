@@ -32,7 +32,7 @@ const baseConfig: webpack.Configuration = {
           options: {
             silent: true,
             transpileOnly: true,
-            compilerOptions: { ...env.tsCompilerOptions, target: 'es6', module: 'esnext' }
+            compilerOptions: { ...env.tsCompilerOptions, target: 'esnext', module: 'esnext' }
           }
         }
       },
