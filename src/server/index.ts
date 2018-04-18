@@ -4,7 +4,7 @@ import path from 'path';
 import serve from 'koa-static';
 import logger from 'koa-logger';
 // Lib
-import pino from '../lib/logger';
+import pino from '#lib/logger';
 // Middleware
 import hmrMiddleware from './middleware/hmr-middleware';
 // Env
@@ -25,4 +25,6 @@ if (isDev) {
     .use(serve(appDist));
 }
 
-app.listen(appPort, () => pino.info(`${appName} v${appVersion} [Port] ${appPort} [Mode] ${isDev ? '⚙️' : '🌎'}`));
+app
+  .use(async (ctx) => { ctx.redirect('/'); })
+  .listen(appPort, () => pino.info(`${appName} v${appVersion} [Port] ${appPort} [Mode] ${isDev ? '⚙️' : '🌎'}`));
