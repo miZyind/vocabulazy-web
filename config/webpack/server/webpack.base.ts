@@ -15,7 +15,8 @@ const baseConfig: webpack.Configuration = {
   },
   resolve: {
     alias: {
-      '#lib': paths.resolveApp('src/lib')
+      '#lib': paths.resolveApp('src/lib'),
+      '#typings': paths.resolveApp('src/typings')
     },
     modules: ['node_modules', paths.nodeModules],
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']

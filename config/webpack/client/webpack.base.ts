@@ -15,10 +15,12 @@ const baseConfig: webpack.Configuration = {
       '@components': paths.resolveApp('src/client/components'),
       '@containers': paths.resolveApp('src/client/containers'),
       '@helpers': paths.resolveApp('src/client/helpers'),
+      '@models': paths.resolveApp('src/client/models'),
       '@reducers': paths.resolveApp('src/client/reducers'),
       '@routes': paths.resolveApp('src/client/routes'),
       '@styles': paths.resolveApp('src/client/styles'),
-      '#lib': paths.resolveApp('src/lib')
+      '#lib': paths.resolveApp('src/lib'),
+      '#typings': paths.resolveApp('src/typings')
     },
     modules: ['node_modules', paths.nodeModules],
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
