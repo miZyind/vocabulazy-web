@@ -1,4 +1,4 @@
-interface IApp {
+interface IStore {
   layout: ILayout;
 }
 
@@ -7,6 +7,6 @@ interface ILayout {
 }
 
 export {
-  IApp,
+  IStore,
   ILayout
 };
