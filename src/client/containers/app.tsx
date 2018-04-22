@@ -18,7 +18,6 @@ type OwnProps = {
 class App extends React.Component<StateProps & DispatchProps & OwnProps> {
   public componentWillMount() {
     const { windowResize } = this.props;
-    const { innerWidth } = window;
     windowResize(innerWidth);
     window.addEventListener('resize', () => windowResize(innerWidth));
   }
