@@ -17,10 +17,12 @@
       "@components/*": ["client/components/*"],
       "@containers/*": ["client/containers/*"],
       "@helpers/*": ["client/helpers/*"],
+      "@models/*": ["client/models/*"],
       "@reducers/*": ["client/reducers/*"],
       "@routes/*": ["client/routes/*"],
       "@styles/*": ["client/styles/*"],
-      "#lib/*": ["lib/*"]
+      "#lib/*": ["lib/*"],
+      "#typings/*": ["typings/*"]
     },
     "plugins": [
       {

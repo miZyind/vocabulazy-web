@@ -15,7 +15,8 @@ const baseConfig: webpack.Configuration = {
   },
   resolve: {
     alias: {
-      '#lib': paths.resolveApp('src/lib')
+      '#lib': paths.resolveApp('src/lib'),
+      '#typings': paths.resolveApp('src/typings')
     },
     modules: ['node_modules', paths.nodeModules],
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
@@ -33,7 +34,10 @@ const baseConfig: webpack.Configuration = {
       'process.env.APP_NAME': JSON.stringify(env.appName),
       'process.env.APP_VERSION': JSON.stringify(env.appVersion),
       'process.env.APP_DIST': JSON.stringify(paths.dist),
-      'process.env.APP_PORT': JSON.stringify(env.appPort)
+      'process.env.APP_PROTOCOL': JSON.stringify(env.appProtocol),
+      'process.env.APP_HOST': JSON.stringify(env.appHost),
+      'process.env.APP_PORT': JSON.stringify(env.appPort),
+      'process.env.APP_PATH': JSON.stringify(env.appPath)
     })
   ],
   externals: [nodeExternals()]
