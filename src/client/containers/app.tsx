@@ -1,27 +1,26 @@
 // Node module
 import React from 'react';
+import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
 import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 // Action
 import { LayoutActions } from '@actions/layout';
 // Model
 import { IStore } from '@models/index';
 
-type PropsUnion = {
-  State: IStore;
-  Dispatch: typeof LayoutActions;
-  Own: {
-    name: string;
-    version: string;
-  };
+type StateProps = IStore;
+type DispatchProps = typeof LayoutActions;
+type OwnProps = {
+  name: string;
+  version: string;
 };
 
-class App extends React.Component<Subset<PropsUnion>> {
+class App extends React.Component<StateProps & DispatchProps & OwnProps> {
   public componentWillMount() {
     const { windowResize } = this.props;
-    // windowResize();
-    // window.addEventListener('resize', windowResize);
+    const { innerWidth } = window;
+    windowResize(innerWidth);
+    window.addEventListener('resize', () => windowResize(innerWidth));
   }
 
   public render() {
@@ -29,7 +28,7 @@ class App extends React.Component<Subset<PropsUnion>> {
   }
 }
 
-export default connect<PropsUnion>(
+export default hot(module)(connect<StateProps, DispatchProps, OwnProps>(
   ({ layout }) => ({ layout }),
   (dispatch) => bindActionCreators(LayoutActions, dispatch)
-)(App);
+)(App));

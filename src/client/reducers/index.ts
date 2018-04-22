@@ -5,6 +5,6 @@ import { IStore } from '@models/index';
 // Reducer
 import layout from '@reducers/layout';
 
-export default combineReducers({
+export default combineReducers<IStore>({
   layout
 } as any);
