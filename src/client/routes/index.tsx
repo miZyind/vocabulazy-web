@@ -7,7 +7,7 @@ import Forum from '@components/forum';
 import Vocabulary from '@components/vocabulary';
 import Note from '@components/note';
 
-const routes: RouteProps[] = [
+const routesConfig: RouteProps[] = [
   {
     path: '/',
     exact: true,
@@ -30,9 +30,11 @@ const routes: RouteProps[] = [
   }
 ];
 
-export default () => (
+const Routes = () => (
   <Switch>
-    {routes.map((route, index) => <Route key={index} {...route} />)}
+    {routesConfig.map((route, index) => <Route key={index} {...route} />)}
     <Redirect to='/' />
   </Switch>
 );
+
+export default Routes;

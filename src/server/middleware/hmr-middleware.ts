@@ -5,7 +5,7 @@ import config from '../../../config/webpack/client/webpack.dev';
 
 const hmrMiddleware = () => koaWebpackMiddleware({
   config,
-  dev: { publicPath: '/', logLevel: 'silent' },
+  dev: { publicPath: process.env.APP_PATH, logLevel: 'silent' },
   hot: { logLevel: 'silent' }
 });
 
