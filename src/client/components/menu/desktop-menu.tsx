@@ -25,7 +25,8 @@ const DesktopMenu = ({ className, activeItem, setActiveItem, login, signup }: ID
         icon='search'
         labelPosition='left'
         content='搜尋單字'
-        color='black' />
+        color='black'
+      />
     </Menu.Item>
     <Menu.Menu position='right'>
       <Menu.Item name='forum' as={NavLink} to='/forum' active={activeItem === 'forum'} onClick={setActiveItem}>

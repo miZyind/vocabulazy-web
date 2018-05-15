@@ -2,20 +2,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
-import { bindActionCreators } from 'redux';
-// Action
-import { LayoutActions } from '@actions/layout';
 // Model
 import { IStore } from '@models/index';
+// Action
+import { Actions } from '@actions/layout';
+// Component
+import Routes from '@routes/index';
+import Menu from '@containers/menu';
 
-type StateProps = IStore;
-type DispatchProps = typeof LayoutActions;
-type OwnProps = {
+type Props = IStore & typeof Actions & {
   name: string;
   version: string;
 };
 
-class App extends React.Component<StateProps & DispatchProps & OwnProps> {
+class App extends React.Component<Props> {
   public componentWillMount() {
     const { windowResize } = this.props;
     windowResize(innerWidth);
@@ -23,11 +23,15 @@ class App extends React.Component<StateProps & DispatchProps & OwnProps> {
   }
 
   public render() {
-    return <div>name: {this.props.name} <br /> version: {this.props.version}</div>;
+    return (
+      <Menu isMobileDisplay={this.props.layout.displayType !== 'desktop'}>
+        <Routes />
+      </Menu>
+    );
   }
 }
 
-export default hot(module)(connect<StateProps, DispatchProps, OwnProps>(
-  ({ layout }) => ({ layout }),
-  (dispatch) => bindActionCreators(LayoutActions, dispatch)
+export default hot(module)(connect(
+  ({ layout }: IStore) => ({ layout }),
+  Actions
 )(App));

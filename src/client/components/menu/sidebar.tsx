@@ -2,18 +2,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { Sidebar as SidebarSrc, Icon, Menu, MenuItemProps, Button } from 'semantic-ui-react';
+import { Sidebar as SidebarSrc, Menu, MenuItemProps, Button } from 'semantic-ui-react';
+// Model
+import { ActiveItem } from '@models/menu';
 
-interface ISidebarProps {
+type SidebarProps = {
   className?: string;
   sideBarVisible: boolean;
   activeItem: string;
   setActiveItem: MenuItemProps['onClick'];
   login: MenuItemProps['onClick'];
   signup: MenuItemProps['onClick'];
-}
+};
 
-const Sidebar = ({ className, sideBarVisible, activeItem, setActiveItem, login, signup }: ISidebarProps) => (
+const Sidebar = ({ className, sideBarVisible, activeItem, setActiveItem, login, signup }: SidebarProps) => (
   <SidebarSrc
     className={className}
     as={Menu}
@@ -22,14 +24,16 @@ const Sidebar = ({ className, sideBarVisible, activeItem, setActiveItem, login, 
     width='thin'
     animation='overlay'
     visible={sideBarVisible}
-    borderless>
+    borderless
+  >
     <Menu.Item
       fitted='horizontally'
       name='forum'
       as={NavLink}
       to='/forum'
-      active={activeItem === 'forum'}
-      onClick={setActiveItem}>
+      active={activeItem === ActiveItem.forum}
+      onClick={setActiveItem}
+    >
       <Button icon='comments' content='學習論壇' compact />
     </Menu.Item>
     <Menu.Item
@@ -37,8 +41,9 @@ const Sidebar = ({ className, sideBarVisible, activeItem, setActiveItem, login, 
       name='vocabulary'
       as={NavLink}
       to='/vocabulary'
-      active={activeItem === 'vocabulary'}
-      onClick={setActiveItem}>
+      active={activeItem === ActiveItem.vocabulary}
+      onClick={setActiveItem}
+    >
       <Button icon='fire' content='發燒單字' compact />
     </Menu.Item>
     <Menu.Item
@@ -46,8 +51,9 @@ const Sidebar = ({ className, sideBarVisible, activeItem, setActiveItem, login, 
       name='note'
       as={NavLink}
       to='/note'
-      active={activeItem === 'note'}
-      onClick={setActiveItem}>
+      active={activeItem === ActiveItem.note}
+      onClick={setActiveItem}
+    >
       <Button icon='bookmark' content='我的筆記' compact />
     </Menu.Item>
     <Menu.Item className='login-item' fitted='horizontally' onClick={login}>
