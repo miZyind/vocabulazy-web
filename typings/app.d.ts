@@ -6,6 +6,8 @@ declare module 'webpack-node-externals';
 // Other
 declare module 'koa-webpack';
 declare module 'react-perf-devtool';
+// Asset
+declare module '@assets/*'
 // Redux DevTools
 interface Window {
   __REDUX_DEVTOOLS_EXTENSION__: any;

@@ -27,6 +27,7 @@
       "@reducers/*": ["client/reducers/*"],
       "@routes/*": ["client/routes/*"],
       "@styles/*": ["client/styles/*"],
+      "@assets/*": ["client/assets/*"],
       "#lib/*": ["lib/*"]
     },
     "allowSyntheticDefaultImports": true,
