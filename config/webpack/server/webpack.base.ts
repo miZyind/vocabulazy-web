@@ -10,13 +10,12 @@ const baseConfig: webpack.Configuration = {
   target: 'node',
   entry: paths.server,
   output: {
-    path: paths.dist,
+    path: paths.build,
     filename: 'index.js'
   },
   resolve: {
     alias: {
-      '#lib': paths.resolveApp('src/lib'),
-      '#typings': paths.resolveApp('src/typings')
+      '#lib': paths.resolveApp('src/lib')
     },
     modules: ['node_modules', paths.nodeModules],
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
@@ -25,19 +24,26 @@ const baseConfig: webpack.Configuration = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader?silent=true&transpileOnly=true'
+        use: {
+          loader: 'ts-loader',
+          options: {
+            silent: true,
+            transpileOnly: true,
+            compilerOptions: { module: 'esnext' }
+          }
+        }
       }
     ]
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.APP_NAME': JSON.stringify(env.appName),
-      'process.env.APP_VERSION': JSON.stringify(env.appVersion),
-      'process.env.APP_DIST': JSON.stringify(paths.dist),
-      'process.env.APP_PROTOCOL': JSON.stringify(env.appProtocol),
-      'process.env.APP_HOST': JSON.stringify(env.appHost),
-      'process.env.APP_PORT': JSON.stringify(env.appPort),
-      'process.env.APP_PATH': JSON.stringify(env.appPath)
+      'process.env.APP_NAME': JSON.stringify(env.name),
+      'process.env.APP_VERSION': JSON.stringify(env.version),
+      'process.env.APP_PROTOCOL': JSON.stringify(env.connection.protocol),
+      'process.env.APP_HOST': JSON.stringify(env.connection.host),
+      'process.env.APP_PORT': JSON.stringify(env.connection.port),
+      'process.env.APP_PATH': JSON.stringify(env.connection.path),
+      'process.env.APP_BUILD': JSON.stringify(paths.build)
     })
   ],
   externals: [nodeExternals()]
