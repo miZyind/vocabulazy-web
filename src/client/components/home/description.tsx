@@ -1,13 +1,18 @@
 // Node module
 import React from 'react';
 import styled from 'styled-components';
-import { Container, Header, Segment, Button } from 'semantic-ui-react';
+import { Container, Header, Segment, Button, Image } from 'semantic-ui-react';
+// Asset
+import google from '@assets/google.png';
+import apple from '@assets/apple.png';
+import desc from '@assets/desc.jpg';
 
-interface IDescriptionProps {
+type Props = {
   className?: string;
-}
+  isMobileDisplay: boolean;
+};
 
-const Description = ({ className }: IDescriptionProps) => (
+const Description = ({ className, isMobileDisplay }: Props) => (
   <div className={className}>
     <Container fluid>
       <Header as='h1' textAlign='center' children='VocabuLazy' />
@@ -18,9 +23,17 @@ const Description = ({ className }: IDescriptionProps) => (
       <Segment textAlign='center' attached='top' compact>
         <Button className='start' children='開始使用' size='big' color='yellow' />
       </Segment>
-      <Segment className='store' textAlign='right' attached='top' compact>
-        <Button icon='google' labelPosition='left' content='Google Play' size='big' color='google plus' />
-        <Button icon='apple' labelPosition='left' content='App Store' size='big' color='twitter' />
+      <Segment
+        className='store'
+        textAlign='right'
+        attached='top'
+        compact
+        style={{ display: isMobileDisplay ? 'none' : 'table' }}
+      >
+        <Image.Group size='small' style={{ margin: '10px' }}>
+          <Image href='' src={google} inline />
+          <Image href='' src={apple} inline />
+        </Image.Group>
       </Segment>
     </Container>
   </div>
@@ -41,7 +54,7 @@ export default styled(Description) `
       filter: brightness(50%);
       background-position: center;
       background-repeat: no-repeat;
-      background-image: url(https://bnextmedia.s3.hicloud.net.tw/image/album/2016-12/img-1481097833-82363.jpg);
+      background-image: url(${desc});
     }
     .container {
       height: 30rem;

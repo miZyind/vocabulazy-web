@@ -3,14 +3,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { Bind } from 'lodash-decorators';
 import { Grid, Menu as MenuSrc, SidebarPushable, SidebarPusher } from 'semantic-ui-react';
-// Model
-import { IMenu } from '@models/menu';
-// Action
-import { Actions } from '@actions/menu';
 // Component
 import Sidebar from './sidebar';
 import MobileMenu from './mobile-menu';
 import DesktopMenu from './desktop-menu';
+// Model
+import { IMenu } from '@models/menu';
+// Action
+import { Actions } from '@actions/menu';
 
 type Props = IMenu & typeof Actions & {
   className?: string;
@@ -23,24 +23,24 @@ class Menu extends React.Component<Props> {
       // StateProps
       activeItem, sideBarVisible,
       // DispatchProps
-      toggleSidebar,
+      toggleSidebar, setActiveItem,
       // OwnProps
       children, className, isMobileDisplay
     } = this.props;
 
     const menu = isMobileDisplay
-      ? <MobileMenu toggleSidebar={toggleSidebar} setActiveItem={this.setActiveItem} openSearchPanel={this.openSearchPanel} />
-      : <DesktopMenu activeItem={activeItem} setActiveItem={this.setActiveItem} login={this.login} signup={this.signup} />;
+      ? <MobileMenu toggleSidebar={toggleSidebar} setActiveItem={setActiveItem} openSearchPanel={this.openSearchPanel} />
+      : <DesktopMenu activeItem={activeItem} setActiveItem={setActiveItem} login={this.login} signup={this.signup} />;
 
     return (
       <>
         <Grid className={className} as={MenuSrc} attached='top'>
           {menu}
         </Grid>
-        <SidebarPushable>
+        <SidebarPushable style={{ minHeight: '500px'}}>
           <Sidebar
             activeItem={activeItem}
-            setActiveItem={this.setActiveItem}
+            setActiveItem={setActiveItem}
             sideBarVisible={isMobileDisplay && sideBarVisible}
             login={this.login}
             signup={this.signup}
@@ -49,11 +49,6 @@ class Menu extends React.Component<Props> {
         </SidebarPushable>
       </>
     );
-  }
-
-  @Bind
-  private setActiveItem(e: any, { name }: any) {
-    this.props.setActiveItem(name);
   }
 
   @Bind

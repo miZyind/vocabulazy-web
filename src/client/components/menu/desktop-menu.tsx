@@ -1,50 +1,89 @@
 // Node module
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Bind } from 'lodash-decorators';
+import { Link } from 'react-router-dom';
 import { Grid, Menu, MenuItemProps, Button, ButtonProps } from 'semantic-ui-react';
 // Component
 import Logo from './logo';
+// Model
+import { ActiveItem } from '@models/menu';
 
-interface IDesktopMenuProps {
+type Props = {
   className?: string;
   activeItem: string;
-  setActiveItem: MenuItemProps['onClick'];
+  setActiveItem: (name: ActiveItem) => void;
   login: ButtonProps['onClick'];
   signup: ButtonProps['onClick'];
-}
+};
 
-const DesktopMenu = ({ className, activeItem, setActiveItem, login, signup }: IDesktopMenuProps) => (
-  <Grid.Column className={className} as={Menu} width='16' inverted borderless>
-    <Menu.Item name='home' as={NavLink} to='/home' active={activeItem === 'home'} onClick={setActiveItem}>
-      <Logo />
-    </Menu.Item>
-    <Menu.Item name='search'>
-      <Button
-        className='search-btn'
-        icon='search'
-        labelPosition='left'
-        content='搜尋單字'
-        color='black'
-      />
-    </Menu.Item>
-    <Menu.Menu position='right'>
-      <Menu.Item name='forum' as={NavLink} to='/forum' active={activeItem === 'forum'} onClick={setActiveItem}>
-        <Button icon='comments' content='學習論壇' compact />
-      </Menu.Item>
-      <Menu.Item name='vocabulary' as={NavLink} to='/vocabulary' active={activeItem === 'vocabulary'} onClick={setActiveItem}>
-        <Button icon='fire' content='發燒單字' compact />
-      </Menu.Item>
-      <Menu.Item name='note' as={NavLink} to='/note' active={activeItem === 'note'} onClick={setActiveItem}>
-        <Button icon='bookmark' content='我的筆記' compact />
-      </Menu.Item>
-      <Menu.Item>
-        <Button className='login-btn' icon='sign in' content='登入' onClick={login} />
-        <Button className='signup-btn' icon='add user' content='註冊' onClick={signup} />
-      </Menu.Item>
-    </Menu.Menu>
-  </Grid.Column>
-);
+class DesktopMenu extends React.PureComponent<Props> {
+  public render() {
+    const { className, activeItem, login, signup } = this.props;
+    return (
+      <Grid.Column className={className} as={Menu} width='16' inverted borderless>
+        <Menu.Item
+          name='home'
+          as={Link}
+          to='/home'
+          active={activeItem === ActiveItem.home}
+          onClick={this.handleOnItemClick}
+        >
+          <Logo />
+        </Menu.Item>
+        <Menu.Item name='search'>
+          <Button
+            className='search-btn'
+            icon='search'
+            labelPosition='left'
+            content='搜尋單字'
+            color='black'
+          />
+        </Menu.Item>
+        <Menu.Menu position='right'>
+          <Menu.Item
+            name='forum'
+            as={Link}
+            to='/forum'
+            active={activeItem === ActiveItem.forum}
+            onClick={this.handleOnItemClick}
+          >
+            <Button icon='comments' content='學習論壇' compact />
+          </Menu.Item>
+          <Menu.Item
+            name='vocabulary'
+            as={Link}
+            to='/vocabulary'
+            active={activeItem === ActiveItem.vocabulary}
+            onClick={this.handleOnItemClick}
+          >
+            <Button icon='fire' content='發燒單字' compact />
+          </Menu.Item>
+          <Menu.Item
+            name='note'
+            as={Link}
+            to='/note'
+            active={activeItem === ActiveItem.note}
+            onClick={this.handleOnItemClick}
+          >
+            <Button icon='bookmark' content='我的筆記' compact />
+          </Menu.Item>
+          <Menu.Item>
+            <Button className='login-btn' icon='sign in' content='登入' onClick={login} />
+            <Button className='signup-btn' icon='add user' content='註冊' onClick={signup} />
+          </Menu.Item>
+        </Menu.Menu>
+      </Grid.Column>
+    );
+  }
+
+  @Bind
+  private handleOnItemClick({ }, { name }: MenuItemProps) {
+    if (name) {
+      this.props.setActiveItem(name as ActiveItem);
+    }
+  }
+}
 
 export default styled(DesktopMenu) `
   &&&& {

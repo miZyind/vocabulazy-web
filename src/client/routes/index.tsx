@@ -3,13 +3,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { SwitchProps } from 'react-router';
 import { Route, RouteProps, Switch, Redirect } from 'react-router-dom';
-// Model
-import { IStore } from '@models/index';
 // Component
-import Home from '@components/home';
+import Home from '@containers/home';
 import Forum from '@components/forum';
 import Note from '@components/note';
 import Vocabulary from '@components/vocabulary';
+// Model
+import { IStore } from '@models/index';
 
 const routesConfig: RouteProps[] = [
   {
