@@ -1,19 +1,21 @@
-// Type
-import { ActionsUnion } from '#typings/actions-union';
 // Helper
 import createAction from '@helpers/create-action';
+import { ActionsUnion } from '@helpers/actions-union';
 
-enum LayoutActionTypes {
+enum ActionTypes {
   WINDOW_RESIZE = '[layout] window resize'
 }
 
-const LayoutActions = {
-  windowResize: (innerWidth: number) => createAction(LayoutActionTypes.WINDOW_RESIZE, { innerWidth })
+const Actions = {
+  windowResize: (innerWidth: number) => createAction(
+    ActionTypes.WINDOW_RESIZE,
+    { innerWidth }
+  )
 };
 
-type LayoutActions = ActionsUnion<typeof LayoutActions>;
+type Actions = ActionsUnion<typeof Actions>;
 
 export {
-  LayoutActionTypes,
-  LayoutActions
+  ActionTypes,
+  Actions
 };

@@ -10,8 +10,8 @@ const prodConfig: webpack.Configuration = {
   ...baseConfig,
   mode: 'production',
   output: {
-    path: paths.dist,
-    filename: '[name].js'
+    path: paths.build,
+    filename: 'assets/js/[name].[hash:6].js'
   },
   module: {
     rules: [
@@ -48,7 +48,7 @@ const prodConfig: webpack.Configuration = {
     ...baseConfig.plugins!,
     new webpack.ProgressPlugin(),
     new ExtractTextPlugin({
-      filename: '[name].[hash:6].css',
+      filename: 'assets/css/[name].[hash:6].css',
       allChunks: true
     })
   ]
