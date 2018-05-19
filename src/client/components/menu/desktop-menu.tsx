@@ -96,10 +96,12 @@ export default styled(DesktopMenu) `
       font-weight: 500;
       border-radius: unset;
       background-color: unset;
+      font-family: 'Noto Sans TC', sans-serif;
     }
     .search-btn {
       background-color: #434A54;
       &:hover { background-color: #555E6B; }
+      font-family: 'Noto Sans TC', sans-serif;
       i { background-color: rgba(0, 0, 0, 0.3); }
     }
     .login-btn {

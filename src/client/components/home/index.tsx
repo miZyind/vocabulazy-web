@@ -2,6 +2,7 @@
 import React from 'react';
 // Component
 import Description from './description';
+import Usage from './usage';
 
 type Props = {
   isMobileDisplay: boolean;
@@ -16,6 +17,7 @@ class Menu extends React.Component<Props> {
     return (
       <>
         <Description isMobileDisplay={isMobileDisplay} />
+        <Usage />
       </>
     );
   }

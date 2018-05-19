@@ -1,7 +1,7 @@
 // Node module
 import React from 'react';
 import styled from 'styled-components';
-import { Container, Header, Segment, Button, Image } from 'semantic-ui-react';
+import { Container, Header, Button, Image } from 'semantic-ui-react';
 // Asset
 import googlePlayLogo from '@assets/google.png';
 import appStoreLogo from '@assets/apple.png';
@@ -23,7 +23,7 @@ const Description = ({ className, isMobileDisplay }: Props) => (
         世界最好用的單字軟體
         <Header.Subheader children='自由決定背誦內容' />
       </Header>
-      <Button className='start' children='開始使用' size='big' color='yellow' />
+      <Button children='開始使用' color='yellow' />
     </div>
     <Image.Group style={{ display: isMobileDisplay ? 'none' : 'block' }}>
       <Image
@@ -76,6 +76,17 @@ export default styled(Description) `
       }
       h2 {
         font-size: 1.5rem;
+        font-family: 'Noto Sans TC', sans-serif;
+      }
+      .ui.button {
+        width: 160px;
+        height: 44px;
+        margin-top: 10px;
+        font-weight: 500;
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+        border-radius: unset;
+        font-family: 'Noto Sans TC', sans-serif;
       }
     }
     .ui.images {

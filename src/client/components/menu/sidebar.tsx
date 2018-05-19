@@ -86,10 +86,11 @@ export default styled(Sidebar) `
       border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
     }
     button {
+      color: white;
       font-weight: 500;
       border-radius: unset;
-      color: white;
       background-color: unset;
+      font-family: 'Noto Sans TC', sans-serif;
     }
     .login-item {
       cursor: pointer;
