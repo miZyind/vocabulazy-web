@@ -50,6 +50,7 @@ export default styled(MobileMenu) `
   &&&& {
     padding: unset;
     .mobile-menu {
+      min-height: 50px;
       border-radius: unset;
       background-color: #1ABC9C;
     }

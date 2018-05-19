@@ -6,6 +6,7 @@ import { hot } from 'react-hot-loader';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 // Style
+import '@styles/index.css';
 import 'semantic-ui-css/semantic.min.css';
 // Container
 import App from '@containers/app';

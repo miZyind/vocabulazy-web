@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container, Header, Segment, Button, Image } from 'semantic-ui-react';
 // Asset
-import google from '@assets/google.png';
-import apple from '@assets/apple.png';
+import googlePlayLogo from '@assets/google.png';
+import appStoreLogo from '@assets/apple.png';
 import desc from '@assets/desc.jpg';
 
 type Props = {
@@ -12,42 +12,52 @@ type Props = {
   isMobileDisplay: boolean;
 };
 
+const googlePlayUrl = 'https://play.google.com/store/apps/details?id=wishcantw.vocabulazy';
+const appStoreUrl = 'https://itunes.apple.com/tw/app/id1138382163';
+
 const Description = ({ className, isMobileDisplay }: Props) => (
-  <div className={className}>
-    <Container fluid>
-      <Header as='h1' textAlign='center' children='VocabuLazy' />
-      <Header as='h2' textAlign='center'>
+  <Container className={className} fluid>
+    <div className='block'>
+      <Header as='h1' children='VocabuLazy' />
+      <Header as='h2'>
         世界最好用的單字軟體
-      <Header.Subheader children='讓你自由決定想背的內容' />
+        <Header.Subheader children='自由決定背誦內容' />
       </Header>
-      <Segment textAlign='center' attached='top' compact>
-        <Button className='start' children='開始使用' size='big' color='yellow' />
-      </Segment>
-      <Segment
-        className='store'
-        textAlign='right'
-        attached='top'
-        compact
-        style={{ display: isMobileDisplay ? 'none' : 'table' }}
-      >
-        <Image.Group size='small' style={{ margin: '10px' }}>
-          <Image href='' src={google} inline />
-          <Image href='' src={apple} inline />
-        </Image.Group>
-      </Segment>
-    </Container>
-  </div>
+      <Button className='start' children='開始使用' size='big' color='yellow' />
+    </div>
+    <Image.Group style={{ display: isMobileDisplay ? 'none' : 'block' }}>
+      <Image
+        inline
+        src={googlePlayLogo}
+        target='_blank'
+        href={googlePlayUrl}
+      />
+      <Image
+        inline
+        src={appStoreLogo}
+        target='_blank'
+        href={appStoreUrl}
+      />
+    </Image.Group>
+  </Container>
 );
 
 export default styled(Description) `
-  &&&& {
+  &.ui.container {
+    display: flex;
+    max-height: 700px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 50px);
     &:before {
       content: "";
       left: 0;
       right: 0;
       z-index: -10;
       width: 100%;
-      height: 30rem;
+      height: calc(100vh - 50px);
+      max-height: 700px;
       display: block;
       position: fixed;
       background-size: cover;
@@ -56,21 +66,31 @@ export default styled(Description) `
       background-repeat: no-repeat;
       background-image: url(${desc});
     }
-    .container {
-      height: 30rem;
-      padding-top: 9rem;
+    .block {
+      text-align: center;
+      .header {
+        color: white;
+      }
+      h1 {
+        font-size: 3.5rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
     }
-    .header {
-      color: white;
+    .ui.images {
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      margin: 0 10px;
+      .ui.inline.image {
+        width: 10rem;
+        margin: 10px;
+        transition: filter 0.3s;
+        &:hover {
+          filter: brightness(110%);
+        }
+     }
     }
-    .segment {
-      border: none;
-      background: unset;
-    }
-    .store {
-      padding: 1rem 0;
-    }
-    .start { color: rgba(0, 0, 0, 0.8); }
-    button { border-radius: unset; }
   }
 `;

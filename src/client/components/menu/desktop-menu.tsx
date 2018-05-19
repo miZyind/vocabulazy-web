@@ -88,6 +88,7 @@ class DesktopMenu extends React.PureComponent<Props> {
 export default styled(DesktopMenu) `
   &&&& {
     padding: unset;
+    min-height: 50px;
     border-radius: unset;
     background-color: #1ABC9C;
     button {
