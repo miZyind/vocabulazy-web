@@ -17,7 +17,7 @@ class Menu extends React.Component<Props> {
     return (
       <>
         <Description isMobileDisplay={isMobileDisplay} />
-        <Usage />
+        <Usage isMobileDisplay={isMobileDisplay} />
       </>
     );
   }
