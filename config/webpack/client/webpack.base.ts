@@ -37,14 +37,6 @@ const baseConfig: webpack.Configuration = {
             compilerOptions: { target: 'es6', module: 'esnext' }
           }
         }
-      },
-      {
-        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
-        use: 'url-loader?limit=4096&name=assets/images/[name].[hash:6].[ext]'
-      },
-      {
-        test: /\.(ico|eot|otf|webp|ttf|woff|woff2)$/i,
-        use: 'file-loader?limit=100000&name=assets/fonts/[name].[hash:6].[ext]'
       }
     ]
   },

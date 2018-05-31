@@ -2,6 +2,7 @@
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import CompressionPlugin from 'compression-webpack-plugin';
 // Config
 import paths from '../paths';
 import baseConfig from './webpack.base';
@@ -16,6 +17,14 @@ const prodConfig: webpack.Configuration = {
   module: {
     rules: [
       ...baseConfig.module!.rules,
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
+        use: 'file-loader?name=/assets/images/[name].[hash:6].[ext]'
+      },
+      {
+        test: /\.(ico|eot|otf|webp|ttf|woff|woff2)$/i,
+        use: 'file-loader?name=/assets/fonts/[name].[hash:6].[ext]'
+      },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
@@ -50,7 +59,8 @@ const prodConfig: webpack.Configuration = {
     new ExtractTextPlugin({
       filename: 'assets/css/[name].[hash:6].css',
       allChunks: true
-    })
+    }),
+    new CompressionPlugin()
   ]
 };
 
