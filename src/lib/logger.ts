@@ -3,6 +3,7 @@ import pino from 'pino';
 import chalk from 'chalk';
 
 let logger: pino.Logger;
+const level = process.env.NODE_ENV === 'development' ? 'debug' : 'info';
 
 if (pino.pretty) {
   const colorize = (value: number) => {
@@ -28,9 +29,9 @@ if (pino.pretty) {
     }
   });
   pretty.pipe(process.stdout);
-  logger = pino({}, pretty);
+  logger = pino({ level }, pretty);
 } else {
-  logger = pino({ prettyPrint: true });
+  logger = pino({ level, prettyPrint: true });
 }
 
 export default logger;
