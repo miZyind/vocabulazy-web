@@ -1,11 +1,14 @@
 // Node module
-import koaWebpackMiddleware from 'koa-webpack';
+import koaWebpack from 'koa-webpack';
 // Config
 import config from '../../../config/webpack/client/webpack.dev';
 
-const hmrMiddleware = () => koaWebpackMiddleware({
+const hmrMiddleware = () => koaWebpack({
   config,
-  dev: { publicPath: process.env.APP_PATH, logLevel: 'silent' },
+  dev: {
+    logLevel: 'silent',
+    publicPath: process.env.APP_PATH
+  },
   hot: { logLevel: 'silent' }
 });
 
