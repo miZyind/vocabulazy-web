@@ -19,7 +19,7 @@ type Props = IMenu & typeof Actions & {
   isMobileDisplay: boolean;
 };
 
-class Menu extends React.Component<Props> {
+class Menu extends React.PureComponent<Props> {
   public render() {
     const {
       // StateProps

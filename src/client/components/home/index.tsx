@@ -10,7 +10,7 @@ type Props = {
   isMobileDisplay: boolean;
 };
 
-class Menu extends React.Component<Props> {
+class Menu extends React.PureComponent<Props> {
   public render() {
     const {
       isMobileDisplay

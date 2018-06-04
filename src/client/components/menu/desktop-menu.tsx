@@ -2,7 +2,7 @@
 import React from 'react';
 import { Location } from 'history';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Grid, Menu, Button, ButtonProps } from 'semantic-ui-react';
 // Component
 import Logo from './logo';
@@ -21,8 +21,8 @@ class DesktopMenu extends React.PureComponent<Props> {
       <Grid.Column className={className} as={Menu} width='16' inverted borderless>
         <Menu.Item
           name='home'
-          as={NavLink}
-          to='/home'
+          as={Link}
+          to='/'
         >
           <Logo />
         </Menu.Item>

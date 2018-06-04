@@ -1,6 +1,5 @@
 // Node module
 import React from 'react';
-import { Location } from 'history';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Grid, Menu, MenuItemProps, Icon } from 'semantic-ui-react';
@@ -23,7 +22,7 @@ class MobileMenu extends React.PureComponent<Props> {
             <Icon name='sidebar' />
           </Grid.Column>
           <Grid.Column className='logo-column' width='12'>
-            <Menu.Item name='home' as={Link} to='/home'>
+            <Menu.Item name='home' as={Link} to='/'>
               <Logo />
             </Menu.Item>
           </Grid.Column>
