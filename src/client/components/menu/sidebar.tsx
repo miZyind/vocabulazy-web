@@ -1,24 +1,21 @@
 // Node module
 import React from 'react';
+import { Location } from 'history';
 import styled from 'styled-components';
-import { Bind } from 'lodash-decorators';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Sidebar as SidebarSrc, Menu, MenuItemProps, Button } from 'semantic-ui-react';
-// Model
-import { ActiveItem } from '@models/menu';
 
 type Props = {
   className?: string;
+  location: Location;
   sideBarVisible: boolean;
-  activeItem: string;
-  setActiveItem: (name: ActiveItem) => void;
   login: MenuItemProps['onClick'];
   signup: MenuItemProps['onClick'];
 };
 
 class Sidebar extends React.PureComponent<Props> {
   public render() {
-    const { className, activeItem, sideBarVisible, login, signup } = this.props;
+    const { className, location, sideBarVisible, login, signup } = this.props;
     return (
       <SidebarSrc
         className={className}
@@ -33,30 +30,27 @@ class Sidebar extends React.PureComponent<Props> {
         <Menu.Item
           fitted='horizontally'
           name='forum'
-          as={Link}
+          as={NavLink}
           to='/forum'
-          active={activeItem === ActiveItem.forum}
-          onClick={this.handleOnItemClick}
+          location={location}
         >
           <Button icon='comments' content='學習論壇' compact />
         </Menu.Item>
         <Menu.Item
           fitted='horizontally'
           name='vocabulary'
-          as={Link}
+          as={NavLink}
           to='/vocabulary'
-          active={activeItem === ActiveItem.vocabulary}
-          onClick={this.handleOnItemClick}
+          location={location}
         >
           <Button icon='fire' content='發燒單字' compact />
         </Menu.Item>
         <Menu.Item
           fitted='horizontally'
           name='note'
-          as={Link}
+          as={NavLink}
           to='/note'
-          active={activeItem === ActiveItem.note}
-          onClick={this.handleOnItemClick}
+          location={location}
         >
           <Button icon='bookmark' content='我的筆記' compact />
         </Menu.Item>
@@ -69,16 +63,9 @@ class Sidebar extends React.PureComponent<Props> {
       </SidebarSrc>
     );
   }
-
-  @Bind
-  private handleOnItemClick({ }, { name }: MenuItemProps) {
-    if (name) {
-      this.props.setActiveItem(name as ActiveItem);
-    }
-  }
 }
 
-export default styled(Sidebar) `
+export default styled(Sidebar)`
   &&&& {
     background-color: #666C78;
     .item {

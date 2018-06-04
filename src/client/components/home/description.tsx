@@ -42,7 +42,7 @@ const Description = ({ className, isMobileDisplay }: Props) => (
   </Container>
 );
 
-export default styled(Description) `
+export default styled(Description)`
   &.ui.container {
     display: flex;
     max-height: 700px;
