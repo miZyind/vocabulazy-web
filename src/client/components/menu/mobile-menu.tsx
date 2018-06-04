@@ -2,21 +2,20 @@
 import React from 'react';
 import { Location } from 'history';
 import styled from 'styled-components';
-import { NavLink, match as Match } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Grid, Menu, MenuItemProps, Icon } from 'semantic-ui-react';
 // Component
 import Logo from './logo';
 
 type Props = {
   className?: string;
-  location: Location;
   toggleSidebar: MenuItemProps['onClick'];
   openSearchPanel: MenuItemProps['onClick'];
 };
 
 class MobileMenu extends React.PureComponent<Props> {
   public render() {
-    const { className, location, toggleSidebar, openSearchPanel } = this.props;
+    const { className, toggleSidebar, openSearchPanel } = this.props;
     return (
       <Grid.Column className={className} width='16' >
         <Grid className='mobile-menu' as={Menu} inverted borderless>
@@ -24,7 +23,7 @@ class MobileMenu extends React.PureComponent<Props> {
             <Icon name='sidebar' />
           </Grid.Column>
           <Grid.Column className='logo-column' width='12'>
-            <Menu.Item name='home' as={NavLink} to='/home' isActive={this.isHomeMatched} location={location}>
+            <Menu.Item name='home' as={Link} to='/home'>
               <Logo />
             </Menu.Item>
           </Grid.Column>
@@ -34,10 +33,6 @@ class MobileMenu extends React.PureComponent<Props> {
         </Grid>
       </Grid.Column >
     );
-  }
-
-  private isHomeMatched(match: Match<{}>, location: Location) {
-    return match || location.pathname === '/';
   }
 }
 

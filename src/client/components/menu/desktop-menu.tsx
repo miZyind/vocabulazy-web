@@ -2,7 +2,7 @@
 import React from 'react';
 import { Location } from 'history';
 import styled from 'styled-components';
-import { NavLink, match as Match } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Grid, Menu, Button, ButtonProps } from 'semantic-ui-react';
 // Component
 import Logo from './logo';
@@ -23,8 +23,6 @@ class DesktopMenu extends React.PureComponent<Props> {
           name='home'
           as={NavLink}
           to='/home'
-          isActive={this.isHomeMatched}
-          location={location}
         >
           <Logo />
         </Menu.Item>
@@ -69,10 +67,6 @@ class DesktopMenu extends React.PureComponent<Props> {
         </Menu.Menu>
       </Grid.Column>
     );
-  }
-
-  private isHomeMatched(match: Match<{}>, location: Location) {
-    return match || location.pathname === '/';
   }
 }
 

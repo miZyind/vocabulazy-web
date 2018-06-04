@@ -31,7 +31,7 @@ class Menu extends React.Component<Props> {
     } = this.props;
 
     const menu = isMobileDisplay
-      ? <MobileMenu location={location} toggleSidebar={toggleSidebar} openSearchPanel={this.openSearchPanel} />
+      ? <MobileMenu toggleSidebar={toggleSidebar} openSearchPanel={this.openSearchPanel} />
       : <DesktopMenu location={location} login={this.login} signup={this.signup} />;
 
     return (
