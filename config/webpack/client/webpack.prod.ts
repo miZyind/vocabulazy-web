@@ -1,8 +1,9 @@
 // Node module
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 // Config
 import paths from '../paths';
 import baseConfig from './webpack.base';
@@ -55,13 +56,19 @@ const prodConfig: webpack.Configuration = {
   },
   plugins: [
     ...baseConfig.plugins!,
-    new webpack.ProgressPlugin(),
+    new ProgressBarPlugin(),
     new ExtractTextPlugin({
       filename: 'assets/css/[name].[hash:6].css',
       allChunks: true
     }),
     new CompressionPlugin()
-  ]
+  ],
+  optimization: {
+    runtimeChunk: true,
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
 };
 
 export default prodConfig;
