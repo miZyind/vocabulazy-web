@@ -1,5 +1,6 @@
 // Node module
 import React from 'react';
+import { Location } from 'history';
 import styled from 'styled-components';
 import { Bind } from 'lodash-decorators';
 import { Grid, Menu as MenuSrc, SidebarPushable, SidebarPusher } from 'semantic-ui-react';
@@ -14,6 +15,7 @@ import { Actions } from '@actions/menu';
 
 type Props = IMenu & typeof Actions & {
   className?: string;
+  location: Location;
   isMobileDisplay: boolean;
 };
 
@@ -21,26 +23,25 @@ class Menu extends React.Component<Props> {
   public render() {
     const {
       // StateProps
-      activeItem, sideBarVisible,
+      sideBarVisible, location,
       // DispatchProps
-      toggleSidebar, setActiveItem,
+      toggleSidebar,
       // OwnProps
       children, className, isMobileDisplay
     } = this.props;
 
     const menu = isMobileDisplay
-      ? <MobileMenu toggleSidebar={toggleSidebar} setActiveItem={setActiveItem} openSearchPanel={this.openSearchPanel} />
-      : <DesktopMenu activeItem={activeItem} setActiveItem={setActiveItem} login={this.login} signup={this.signup} />;
+      ? <MobileMenu location={location} toggleSidebar={toggleSidebar} openSearchPanel={this.openSearchPanel} />
+      : <DesktopMenu location={location} login={this.login} signup={this.signup} />;
 
     return (
       <>
         <Grid className={className} as={MenuSrc} attached='top'>
           {menu}
         </Grid>
-        <SidebarPushable style={{ minHeight: '500px'}}>
+        <SidebarPushable style={{ minHeight: '500px' }}>
           <Sidebar
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
+            location={location}
             sideBarVisible={isMobileDisplay && sideBarVisible}
             login={this.login}
             signup={this.signup}
@@ -67,7 +68,7 @@ class Menu extends React.Component<Props> {
   }
 }
 
-export default styled(Menu) `
+export default styled(Menu)`
   &&&& {
     border: none;
     border-radius: unset;

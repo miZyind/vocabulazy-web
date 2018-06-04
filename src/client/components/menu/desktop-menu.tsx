@@ -1,33 +1,30 @@
 // Node module
 import React from 'react';
+import { Location } from 'history';
 import styled from 'styled-components';
-import { Bind } from 'lodash-decorators';
-import { Link } from 'react-router-dom';
-import { Grid, Menu, MenuItemProps, Button, ButtonProps } from 'semantic-ui-react';
+import { NavLink, match as Match } from 'react-router-dom';
+import { Grid, Menu, Button, ButtonProps } from 'semantic-ui-react';
 // Component
 import Logo from './logo';
-// Model
-import { ActiveItem } from '@models/menu';
 
 type Props = {
   className?: string;
-  activeItem: string;
-  setActiveItem: (name: ActiveItem) => void;
+  location: Location;
   login: ButtonProps['onClick'];
   signup: ButtonProps['onClick'];
 };
 
 class DesktopMenu extends React.PureComponent<Props> {
   public render() {
-    const { className, activeItem, login, signup } = this.props;
+    const { className, location, login, signup } = this.props;
     return (
       <Grid.Column className={className} as={Menu} width='16' inverted borderless>
         <Menu.Item
           name='home'
-          as={Link}
+          as={NavLink}
           to='/home'
-          active={activeItem === ActiveItem.home}
-          onClick={this.handleOnItemClick}
+          isActive={this.isHomeMatched}
+          location={location}
         >
           <Logo />
         </Menu.Item>
@@ -43,28 +40,25 @@ class DesktopMenu extends React.PureComponent<Props> {
         <Menu.Menu position='right'>
           <Menu.Item
             name='forum'
-            as={Link}
+            as={NavLink}
             to='/forum'
-            active={activeItem === ActiveItem.forum}
-            onClick={this.handleOnItemClick}
+            location={location}
           >
             <Button icon='comments' content='學習論壇' compact />
           </Menu.Item>
           <Menu.Item
             name='vocabulary'
-            as={Link}
+            as={NavLink}
             to='/vocabulary'
-            active={activeItem === ActiveItem.vocabulary}
-            onClick={this.handleOnItemClick}
+            location={location}
           >
             <Button icon='fire' content='發燒單字' compact />
           </Menu.Item>
           <Menu.Item
             name='note'
-            as={Link}
+            as={NavLink}
             to='/note'
-            active={activeItem === ActiveItem.note}
-            onClick={this.handleOnItemClick}
+            location={location}
           >
             <Button icon='bookmark' content='我的筆記' compact />
           </Menu.Item>
@@ -77,15 +71,12 @@ class DesktopMenu extends React.PureComponent<Props> {
     );
   }
 
-  @Bind
-  private handleOnItemClick({ }, { name }: MenuItemProps) {
-    if (name) {
-      this.props.setActiveItem(name as ActiveItem);
-    }
+  private isHomeMatched(match: Match<{}>, location: Location) {
+    return match || location.pathname === '/';
   }
 }
 
-export default styled(DesktopMenu) `
+export default styled(DesktopMenu)`
   &&&& {
     padding: unset;
     min-height: 50px;

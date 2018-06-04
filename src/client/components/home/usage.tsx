@@ -22,7 +22,7 @@ const Usage = ({ className, isMobileDisplay }: Props) => (
   </Grid>
 );
 
-export default styled(Usage) `
+export default styled(Usage)`
   &.ui.grid {
     margin: unset;
     && .video {

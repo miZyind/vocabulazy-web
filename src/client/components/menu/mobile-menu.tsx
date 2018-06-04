@@ -1,24 +1,22 @@
 // Node module
 import React from 'react';
+import { Location } from 'history';
 import styled from 'styled-components';
-import { Bind } from 'lodash-decorators';
-import { Link } from 'react-router-dom';
+import { NavLink, match as Match } from 'react-router-dom';
 import { Grid, Menu, MenuItemProps, Icon } from 'semantic-ui-react';
 // Component
 import Logo from './logo';
-// Model
-import { ActiveItem } from '@models/menu';
 
 type Props = {
   className?: string;
+  location: Location;
   toggleSidebar: MenuItemProps['onClick'];
-  setActiveItem: (name: ActiveItem) => void;
   openSearchPanel: MenuItemProps['onClick'];
 };
 
 class MobileMenu extends React.PureComponent<Props> {
   public render() {
-    const { className, toggleSidebar, openSearchPanel } = this.props;
+    const { className, location, toggleSidebar, openSearchPanel } = this.props;
     return (
       <Grid.Column className={className} width='16' >
         <Grid className='mobile-menu' as={Menu} inverted borderless>
@@ -26,7 +24,7 @@ class MobileMenu extends React.PureComponent<Props> {
             <Icon name='sidebar' />
           </Grid.Column>
           <Grid.Column className='logo-column' width='12'>
-            <Menu.Item name='home' as={Link} to='/home' onClick={this.handleOnItemClick}>
+            <Menu.Item name='home' as={NavLink} to='/home' isActive={this.isHomeMatched} location={location}>
               <Logo />
             </Menu.Item>
           </Grid.Column>
@@ -38,15 +36,12 @@ class MobileMenu extends React.PureComponent<Props> {
     );
   }
 
-  @Bind
-  private handleOnItemClick({ }, { name }: MenuItemProps) {
-    if (name) {
-      this.props.setActiveItem(name as ActiveItem);
-    }
+  private isHomeMatched(match: Match<{}>, location: Location) {
+    return match || location.pathname === '/';
   }
 }
 
-export default styled(MobileMenu) `
+export default styled(MobileMenu)`
   &&&& {
     padding: unset;
     .mobile-menu {

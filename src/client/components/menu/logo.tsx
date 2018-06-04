@@ -14,7 +14,7 @@ const Logo = ({ className }: Props) => (
   </>
 );
 
-export default styled(Logo) `
+export default styled(Logo)`
   font-size: 1.5rem;
   font-family: PingFangTC;
 `;
