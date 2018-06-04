@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Bind } from 'lodash-decorators';
 import { Grid, Menu as MenuSrc, SidebarPushable, SidebarPusher } from 'semantic-ui-react';
 // Component
+import SignModal from './sign-modal';
 import Sidebar from './sidebar';
 import MobileMenu from './mobile-menu';
 import DesktopMenu from './desktop-menu';
@@ -23,7 +24,7 @@ class Menu extends React.PureComponent<Props> {
   public render() {
     const {
       // StateProps
-      sideBarVisible, location,
+      sideBarVisible, location, isModalOpen,
       // DispatchProps
       toggleSidebar,
       // OwnProps
@@ -36,6 +37,7 @@ class Menu extends React.PureComponent<Props> {
 
     return (
       <>
+        <SignModal isModalOpen={isModalOpen} />
         <Grid className={className} as={MenuSrc} attached='top'>
           {menu}
         </Grid>
@@ -59,7 +61,7 @@ class Menu extends React.PureComponent<Props> {
 
   @Bind
   private login() {
-    // TODO:
+    this.props.openSignModal();
   }
 
   @Bind
