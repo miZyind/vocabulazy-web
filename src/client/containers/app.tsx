@@ -9,10 +9,7 @@ import { Actions } from '@actions/layout';
 import Routes from '@routes/index';
 import Menu from '@containers/menu';
 
-type Props = Pick<IStore, 'layout'> & typeof Actions & {
-  name: string;
-  version: string;
-};
+type Props = Pick<IStore, 'layout'> & typeof Actions;
 
 class App extends React.Component<Props> {
   public componentWillMount() {

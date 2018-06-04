@@ -1,22 +1,20 @@
 // Node module
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
 import { hot } from 'react-hot-loader';
-import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 // Style
 import '@styles/index.css';
 import 'semantic-ui-css/semantic.min.css';
-// Container
-import App from '@containers/app';
+// Root
+import Root from '@components/root';
 // Store
 import configureStore from './store';
 
 // Env
 const isDev = process.env.NODE_ENV !== 'production';
-const name = process.env.APP_NAME!;
-const version = process.env.APP_VERSION!;
+const history = createHistory();
+const store = configureStore(history);
 
 /* tslint:disable:no-var-requires */
 // Devtools
@@ -26,17 +24,9 @@ if (isDev) {
 }
 /* tslint:enable:no-var-requires */
 
-const history = createHistory();
-
-const store = configureStore(history);
-
-const Component = isDev ? App : hot(module)(App);
+const Component = isDev ? hot(module)(Root) : Root;
 
 render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Component name={name} version={version} />
-    </ConnectedRouter>
-  </Provider>,
+  <Component store={store} history={history} />,
   document.getElementById('root')
 );
