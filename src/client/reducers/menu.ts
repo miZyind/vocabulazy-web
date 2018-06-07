@@ -5,7 +5,7 @@ import { IMenu } from '@models/menu';
 
 const initState: IMenu = {
   sideBarVisible: false,
-  isModalOpen: false
+  isSignModalOpen: false
 };
 
 const menu = (state = initState, action: Actions) => {
@@ -14,7 +14,10 @@ const menu = (state = initState, action: Actions) => {
       return { ...state, sideBarVisible: !state.sideBarVisible };
     }
     case ActionTypes.OPEN_SIGN_MODAL: {
-      return { ...state, isModalOpen: true };
+      return { ...state, isSignModalOpen: true };
+    }
+    case ActionTypes.CLOSE_SIGN_MODAL: {
+      return { ...state, isSignModalOpen: false };
     }
     default: {
       return state;

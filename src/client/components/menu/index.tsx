@@ -24,7 +24,7 @@ class Menu extends React.PureComponent<Props> {
   public render() {
     const {
       // StateProps
-      sideBarVisible, location, isModalOpen,
+      sideBarVisible, location, isSignModalOpen,
       // DispatchProps
       toggleSidebar,
       // OwnProps
@@ -33,11 +33,11 @@ class Menu extends React.PureComponent<Props> {
 
     const menu = isMobileDisplay
       ? <MobileMenu toggleSidebar={toggleSidebar} openSearchPanel={this.openSearchPanel} />
-      : <DesktopMenu location={location} login={this.login} signup={this.signup} />;
+      : <DesktopMenu location={location} login={this.openSignModalIn} signup={this.openSignModalUp} />;
 
     return (
       <>
-        <SignModal isModalOpen={isModalOpen} />
+        <SignModal isOpen={isSignModalOpen} doLogin={this.doSignIn} />
         <Grid className={className} as={MenuSrc} attached='top'>
           {menu}
         </Grid>
@@ -45,8 +45,8 @@ class Menu extends React.PureComponent<Props> {
           <Sidebar
             location={location}
             sideBarVisible={isMobileDisplay && sideBarVisible}
-            login={this.login}
-            signup={this.signup}
+            login={this.openSignModalIn}
+            signup={this.openSignModalUp}
           />
           <SidebarPusher children={children} />
         </SidebarPushable>
@@ -60,12 +60,22 @@ class Menu extends React.PureComponent<Props> {
   }
 
   @Bind
-  private login() {
+  private openSignModalIn() {
     this.props.openSignModal();
   }
 
   @Bind
-  private signup() {
+  private doSignIn() {
+    this.props.closeSignModal();
+  }
+
+  @Bind
+  private openSignModalUp() {
+    this.props.openSignModal();
+  }
+
+  @Bind
+  private doSignUp() {
     // TODO:
   }
 }
