@@ -1,6 +1,10 @@
+// Model
+import { ISidebar } from '@models/sidebar';
+import { ISignModal } from '@models/sign-modal';
+
 interface IMenu {
-  sideBarVisible: boolean;
-  isSignModalOpen: boolean;
+  sidebar: ISidebar;
+  signModal: ISignModal;
 }
 
 export {

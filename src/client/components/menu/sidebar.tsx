@@ -2,20 +2,22 @@
 import React from 'react';
 import { Location } from 'history';
 import styled from 'styled-components';
+import Bind from 'lodash-decorators/bind';
 import { NavLink } from 'react-router-dom';
-import { Sidebar as SidebarSrc, Menu, MenuItemProps, Button } from 'semantic-ui-react';
+import { Sidebar as SidebarSrc, Menu, Button } from 'semantic-ui-react';
+// Modal
+import { Mode } from '@models/sign-modal';
 
 type Props = {
   className?: string;
   location: Location;
-  sideBarVisible: boolean;
-  login: MenuItemProps['onClick'];
-  signup: MenuItemProps['onClick'];
+  visible: boolean;
+  openModal: (mode: Mode) => void;
 };
 
 class Sidebar extends React.PureComponent<Props> {
   public render() {
-    const { className, location, sideBarVisible, login, signup } = this.props;
+    const { className, location, visible } = this.props;
     return (
       <SidebarSrc
         className={className}
@@ -24,7 +26,7 @@ class Sidebar extends React.PureComponent<Props> {
         inverted
         width='thin'
         animation='overlay'
-        visible={sideBarVisible}
+        visible={visible}
         borderless
       >
         <Menu.Item
@@ -54,14 +56,33 @@ class Sidebar extends React.PureComponent<Props> {
         >
           <Button icon='bookmark' content='我的筆記' compact />
         </Menu.Item>
-        <Menu.Item className='login-item' fitted='horizontally' onClick={login}>
+        <Menu.Item
+          className='login-item'
+          fitted='horizontally'
+          data-mode='sign-in'
+          onClick={this.handleClick}
+        >
           <Button icon='sign in' content='登入' compact />
         </Menu.Item>
-        <Menu.Item className='signup-item' fitted='horizontally' onClick={signup}>
+        <Menu.Item
+          className='signup-item'
+          fitted='horizontally'
+          data-mode='sign-up'
+          onClick={this.handleClick}
+        >
           <Button icon='add user' content='註冊' compact />
         </Menu.Item>
       </SidebarSrc>
     );
+  }
+
+  @Bind
+  private handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    const { mode } = e.currentTarget.dataset;
+    if (mode) {
+      const isSignInMode = mode === 'sign-in';
+      this.props.openModal(isSignInMode);
+    }
   }
 }
 

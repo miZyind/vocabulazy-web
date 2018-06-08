@@ -1,23 +1,30 @@
 // Node module
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Transition, Header, Grid, Input, Button, Dimmer, Divider } from 'semantic-ui-react';
 
 type Props = {
   className?: string;
   isOpen: boolean;
+  isSignInMode: boolean;
   doLogin: () => void;
+  switchMode: () => void;
+  closeModal: () => void;
 };
 
 class SignModal extends React.PureComponent<Props> {
   public render() {
-    // tslint:disable:jsx-no-lambda
-    const { className, isOpen, doLogin } = this.props;
+    const { isOpen, isSignInMode, doLogin, switchMode, closeModal } = this.props;
+    let { className } = this.props;
+    className += isSignInMode ? ' sign-in' : ' sign-up';
+    const contentName = isSignInMode ? '登入' : '註冊';
+
     return (
       <Transition visible={isOpen} duration={500} unmountOnHide>
-        <Dimmer page active>
+        <Dimmer page active onClickOutside={closeModal}>
           <Grid className={className}>
-            <Header content='登入' />
+            <div className='background'/>
+            <Header content={contentName} />
             <Grid.Row>
               <Grid.Column textAlign='center'>
                 <Input placeholder='帳號' />
@@ -32,7 +39,7 @@ class SignModal extends React.PureComponent<Props> {
               <Grid.Column textAlign='center'>
                 <Button
                   className='login'
-                  content='登入'
+                  content={contentName}
                   basic
                   onClick={doLogin}
                 />
@@ -61,7 +68,8 @@ class SignModal extends React.PureComponent<Props> {
                 />
               </Grid.Column>
             </Grid.Row>
-            <Button className='switch' content='+' />
+            <Divider />
+            <Button className='switch' content='+' onClick={switchMode} />
           </Grid>
         </Dimmer>
       </Transition>
@@ -69,29 +77,54 @@ class SignModal extends React.PureComponent<Props> {
   }
 }
 
+const signInColor = `#1ABC9C`;
+const signUpColor = `#FECE55`;
+const foreColor = `rgba(0, 0, 0, 0.54)`;
+const fontFamily = `'Noto Sans TC', sans-serif`;
+const ease = `cubic-bezier(0.600, 0.040, 0.980, 0.335)`;
+
 export default styled(SignModal)`
   &&& {
     width: 250px;
     border-radius: 1%;
     position: relative;
-    padding: 2rem 0 1.5rem 0;
-    background-color: #1ABC9C;
+    background-color: ${signInColor};
+    .background {
+      width: 100%;
+      height: 100%;
+      padding: unset;
+      overflow: hidden;
+      position: absolute;
+      &:before {
+        content: '';
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        position: absolute;
+        background-color: ${signUpColor};
+        transition: all 0.5s ${ease};
+      }
+    }
     .ui.header {
-      color: white;
+      z-index: 0;
       border: unset;
-      padding: 0 2rem;
-      font-family: 'Noto Sans TC', sans-serif;
+      transition: color 0.5s ${ease};
+      padding: 1.5rem 2rem 0.5rem 2rem;
+      font-family: ${fontFamily};
+    }
+    .ui.divider {
+      z-index: 0;
     }
     input {
-      border-radius: unset;
       box-shadow: unset;
+      border-radius: unset;
     }
     .ui.basic.button {
       width: 13rem;
       box-shadow: unset;
       border-radius: unset;
-      font-family: 'Noto Sans TC', sans-serif;
       transition: filter 0.3s;
+      font-family: ${fontFamily};
       &:hover {
         box-shadow: unset;
         filter: brightness(110%);
@@ -100,8 +133,7 @@ export default styled(SignModal)`
         box-shadow: unset;
       }
       &.login {
-        background-color: #FECE55 !important;
-        color: rgba(0, 0, 0, 0.54) !important;
+        transition: color 0.5s ${ease}, background-color 0.5s ${ease};
       }
       &.facebook {
         color: white !important;
@@ -116,20 +148,61 @@ export default styled(SignModal)`
       padding: 0.5rem 0 !important;
     }
     .switch {
-      top: 20px;
+      top: 5px;
       right: -30px;
       width: 60px;
       height: 60px;
       margin: unset;
       padding: unset;
       font-size: 2rem;
+      line-height: 2rem;
       position: absolute;
       border-radius: 50%;
-      transition: filter 0.3s;
-      background-color: #FECE55;
-      box-shadow: rgba(0, 0, 0, 0.3) 1px 3px 5px 0px;
+      transition: filter 0.3s, color 0.5s ${ease}, background-color 0.5s ${ease};
       &:hover {
         filter: brightness(110%);
+      }
+    }
+    &.sign-in {
+      .background {
+        &:before {
+          width: 60px;
+          height: 60px;
+          top: 5px;
+          right: calc(-60px / 2);
+        }
+      }
+      .ui.header {
+        color: white;
+      }
+      .ui.basic.button.login {
+        color: ${foreColor} !important;
+        background-color: ${signUpColor} !important;
+      }
+      .switch {
+        color: ${foreColor};
+        background-color: ${signUpColor};
+      }
+    }
+    &.sign-up {
+      .background {
+        &:before {
+          width: 900px;
+          height: 900px;
+          top: calc(-900px / 2 + 5px);
+          right: calc(-900px / 2);
+        }
+      }
+      .ui.header {
+        color: ${foreColor};
+      }
+      .ui.basic.button.login {
+        color: white !important;
+        background-color: ${signInColor} !important;
+      }
+      .switch {
+        color: white;
+        background-color: ${signInColor};
       }
     }
   }

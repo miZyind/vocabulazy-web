@@ -12,9 +12,10 @@ import DesktopMenu from './desktop-menu';
 // Model
 import { IMenu } from '@models/menu';
 // Action
-import { Actions } from '@actions/menu';
+import { Actions as MenuActions } from '@actions/menu';
+import { Actions as SignModalActions } from '@actions/sign-modal';
 
-type Props = IMenu & typeof Actions & {
+type Props = IMenu & typeof MenuActions & typeof SignModalActions & {
   className?: string;
   location: Location;
   isMobileDisplay: boolean;
@@ -24,29 +25,28 @@ class Menu extends React.PureComponent<Props> {
   public render() {
     const {
       // StateProps
-      sideBarVisible, location, isSignModalOpen,
+      location, sidebar, signModal,
       // DispatchProps
-      toggleSidebar,
+      toggleSidebar, openModal, switchMode, closeModal,
       // OwnProps
       children, className, isMobileDisplay
     } = this.props;
 
     const menu = isMobileDisplay
       ? <MobileMenu toggleSidebar={toggleSidebar} openSearchPanel={this.openSearchPanel} />
-      : <DesktopMenu location={location} login={this.openSignModalIn} signup={this.openSignModalUp} />;
+      : <DesktopMenu location={location} openModal={openModal} />;
 
     return (
       <>
-        <SignModal isOpen={isSignModalOpen} doLogin={this.doSignIn} />
+        <SignModal {...signModal} doLogin={closeModal} switchMode={switchMode} closeModal={closeModal} />
         <Grid className={className} as={MenuSrc} attached='top'>
           {menu}
         </Grid>
         <SidebarPushable style={{ minHeight: '500px' }}>
           <Sidebar
             location={location}
-            sideBarVisible={isMobileDisplay && sideBarVisible}
-            login={this.openSignModalIn}
-            signup={this.openSignModalUp}
+            visible={isMobileDisplay && sidebar.visible}
+            openModal={openModal}
           />
           <SidebarPusher children={children} />
         </SidebarPushable>
@@ -56,26 +56,6 @@ class Menu extends React.PureComponent<Props> {
 
   @Bind
   private openSearchPanel() {
-    // TODO:
-  }
-
-  @Bind
-  private openSignModalIn() {
-    this.props.openSignModal();
-  }
-
-  @Bind
-  private doSignIn() {
-    this.props.closeSignModal();
-  }
-
-  @Bind
-  private openSignModalUp() {
-    this.props.openSignModal();
-  }
-
-  @Bind
-  private doSignUp() {
     // TODO:
   }
 }
