@@ -1,7 +1,7 @@
 // Node module
 import React from 'react';
 import styled from 'styled-components';
-import { Container, Header, Button, Image } from 'semantic-ui-react';
+import { Header, Button, Image } from 'semantic-ui-react';
 // Asset
 import googlePlayLogo from '@assets/google.png';
 import appStoreLogo from '@assets/apple.png';
@@ -16,7 +16,7 @@ const googlePlayUrl = 'https://play.google.com/store/apps/details?id=wishcantw.v
 const appStoreUrl = 'https://itunes.apple.com/tw/app/id1138382163';
 
 const Description = ({ className, isMobileDisplay }: Props) => (
-  <Container className={className} fluid>
+  <div className={className}>
     <div className='block'>
       <Header as='h1' children='VocabuLazy' />
       <Header as='h2'>
@@ -39,25 +39,23 @@ const Description = ({ className, isMobileDisplay }: Props) => (
         href={appStoreUrl}
       />
     </Image.Group>
-  </Container>
+  </div>
 );
 
 export default styled(Description)`
-  &.ui.container {
+  &&&& {
     display: flex;
-    max-height: 700px;
     position: relative;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 3rem);
     &:before {
       content: "";
       left: 0;
       right: 0;
       z-index: -10;
       width: 100%;
-      height: calc(100vh - 50px);
-      max-height: 700px;
+      height: calc(100vh - 3rem);
       display: block;
       position: fixed;
       background-size: cover;

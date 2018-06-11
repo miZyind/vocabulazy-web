@@ -82,7 +82,7 @@ const signInColor = `#1ABC9C`;
 const signUpColor = `#FECE55`;
 const foreColor = `#434A54`;
 const fontFamily = `'Noto Sans TC', sans-serif`;
-const ease = `cubic-bezier(0.600, 0.040, 0.980, 0.335)`;
+const ease = `ease`;
 
 export default styled(SignModal)`
   &&& {

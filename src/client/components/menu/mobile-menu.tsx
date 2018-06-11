@@ -39,7 +39,7 @@ export default styled(MobileMenu)`
   &&&& {
     padding: unset;
     .mobile-menu {
-      min-height: 50px;
+      min-height: 3.5rem;
       border-radius: unset;
       background-color: #1ABC9C;
     }

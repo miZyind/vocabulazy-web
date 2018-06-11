@@ -82,6 +82,7 @@ export default styled(Footer)`
     width: 100%;
     padding: 2rem;
     margin: unset;
+    background-color: white;
     a { color: unset; }
     .ui.header {
       white-space: nowrap;

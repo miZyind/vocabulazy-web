@@ -36,19 +36,25 @@ class Menu extends React.PureComponent<Props> {
       ? <MobileMenu toggleSidebar={toggleSidebar} openSearchPanel={this.openSearchPanel} />
       : <DesktopMenu location={location} openModal={openModal} />;
 
+    const isSidebarOpened = isMobileDisplay && sidebar.visible;
+
     return (
       <>
         <SignModal {...signModal} doLogin={closeModal} switchMode={switchMode} closeModal={closeModal} />
-        <Grid className={className} as={MenuSrc}>
-          {menu}
-        </Grid>
-        <SidebarPushable style={{ minHeight: '500px' }}>
+        <SidebarPushable className={className}>
           <Sidebar
             location={location}
-            visible={isMobileDisplay && sidebar.visible}
+            visible={isSidebarOpened}
             openModal={openModal}
           />
-          <SidebarPusher children={children} />
+          <SidebarPusher dimmed={isSidebarOpened} onClick={isSidebarOpened ? toggleSidebar : null}>
+            <Grid as={MenuSrc} fixed='top'>
+              {menu}
+            </Grid>
+            <div className='content'>
+              {children}
+            </div>
+          </SidebarPusher>
         </SidebarPushable>
       </>
     );
@@ -60,12 +66,25 @@ class Menu extends React.PureComponent<Props> {
   }
 }
 
+const menuHeight = `3.5rem`;
+
 export default styled(Menu)`
   &&&& {
-    border: none;
-    margin: unset;
-    border-radius: unset;
-    border-color: #1ABC9C;
-    .ui.menu .item { padding: 0.5rem; }
+    transform: none;
+    .ui.grid {
+      border: none;
+      margin: unset;
+      border-radius: unset;
+      border-color: #1ABC9C;
+      .ui.menu .item { padding: 0.5rem; }
+    }
+    .content {
+      overflow-y: auto;
+      margin-top: ${menuHeight};
+      height: calc(100vh - ${menuHeight});
+    }
+    .pusher.dimmed:after {
+      top: ${menuHeight} !important;
+    }
   }
 `;

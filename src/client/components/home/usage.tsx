@@ -25,6 +25,7 @@ const Usage = ({ className, isMobileDisplay }: Props) => (
 export default styled(Usage)`
   &&& {
     margin: unset;
+    background-color: white;
     border-bottom: 1px solid #979797;
     .column.video {
       padding: 2rem 3rem !important;

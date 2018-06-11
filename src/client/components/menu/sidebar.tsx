@@ -86,7 +86,9 @@ class Sidebar extends React.PureComponent<Props> {
 
 export default styled(Sidebar)`
   &&&& {
+    position: fixed;
     background-color: #666C78;
+    margin-top: 3.5rem !important;
     .item {
       padding: 0.5rem 0;
       border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
