@@ -2,29 +2,27 @@
 import React from 'react';
 import { Location } from 'history';
 import styled from 'styled-components';
-import { NavLink, match as Match } from 'react-router-dom';
-import { Grid, Menu, Button, ButtonProps } from 'semantic-ui-react';
+import Bind from 'lodash-decorators/bind';
+import { Link, NavLink } from 'react-router-dom';
+import { Grid, Menu, Button } from 'semantic-ui-react';
 // Component
 import Logo from './logo';
 
 type Props = {
   className?: string;
   location: Location;
-  login: ButtonProps['onClick'];
-  signup: ButtonProps['onClick'];
+  openModal: (isSignInMode: boolean) => void;
 };
 
 class DesktopMenu extends React.PureComponent<Props> {
   public render() {
-    const { className, location, login, signup } = this.props;
+    const { className, location } = this.props;
     return (
       <Grid.Column className={className} as={Menu} width='16' inverted borderless>
         <Menu.Item
           name='home'
-          as={NavLink}
-          to='/home'
-          isActive={this.isHomeMatched}
-          location={location}
+          as={Link}
+          to='/'
         >
           <Logo />
         </Menu.Item>
@@ -63,23 +61,40 @@ class DesktopMenu extends React.PureComponent<Props> {
             <Button icon='bookmark' content='我的筆記' compact />
           </Menu.Item>
           <Menu.Item>
-            <Button className='login-btn' icon='sign in' content='登入' onClick={login} />
-            <Button className='signup-btn' icon='add user' content='註冊' onClick={signup} />
+            <Button
+              className='login-btn'
+              icon='sign in'
+              content='登入'
+              data-mode='sign-in'
+              onClick={this.handleClick}
+            />
+            <Button
+              className='signup-btn'
+              icon='add user'
+              content='註冊'
+              data-mode='sign-up'
+              onClick={this.handleClick}
+            />
           </Menu.Item>
         </Menu.Menu>
       </Grid.Column>
     );
   }
 
-  private isHomeMatched(match: Match<{}>, location: Location) {
-    return match || location.pathname === '/';
+  @Bind
+  private handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+    const { mode } = e.currentTarget.dataset;
+    if (mode) {
+      const isSignInMode = mode === 'sign-in';
+      this.props.openModal(isSignInMode);
+    }
   }
 }
 
 export default styled(DesktopMenu)`
   &&&& {
     padding: unset;
-    min-height: 50px;
+    min-height: 3.5rem;
     border-radius: unset;
     background-color: #1ABC9C;
     button {
@@ -96,11 +111,16 @@ export default styled(DesktopMenu)`
       i { background-color: rgba(0, 0, 0, 0.3); }
     }
     .login-btn {
-      &:hover { background: rgba(255, 255, 255, 0.3); }
+      color: white;
+      transition: filter 0.3s;
+      background-color: #434A54;
+      &:hover { filter: brightness(110%); }
     }
     .signup-btn {
-      background-color: #434A54;
-      &:hover { background-color: #555E6B; }
+      color: #434A54;
+      transition: filter 0.3s;
+      background-color: #FECE55;
+      &:hover { filter: brightness(110%); }
     }
   }
 `;

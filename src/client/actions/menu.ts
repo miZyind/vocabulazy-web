@@ -1,18 +1,16 @@
 // Helper
-import createAction from '@helpers/create-action';
 import { ActionsUnion } from '@helpers/actions-union';
-
-enum ActionTypes {
-  TOGGLE_SIDEBAR = '[menu] toggle sidebar'
-}
+// Action
+import { Actions as SidebarActions } from '@actions/sidebar';
+import { Actions as SignModalActions } from '@actions/sign-modal';
 
 const Actions = {
-  toggleSidebar: () => createAction(ActionTypes.TOGGLE_SIDEBAR)
+  ...SidebarActions,
+  ...SignModalActions
 };
 
 type Actions = ActionsUnion<typeof Actions>;
 
 export {
-  ActionTypes,
   Actions
 };

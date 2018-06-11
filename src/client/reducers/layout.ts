@@ -1,7 +1,7 @@
 // Action
 import { ActionTypes, Actions } from '@actions/layout';
 // Model
-import { ILayout } from '@models/index';
+import { ILayout } from '@models/layout';
 
 const initState: ILayout = {
   displayType: 'desktop'

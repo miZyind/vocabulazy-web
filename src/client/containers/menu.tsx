@@ -8,7 +8,10 @@ import { Actions } from '@actions/menu';
 import Menu from '@components/menu';
 
 const ConnectedMenu = connect(
-  ({ menu, router }: IStore) => ({ ...menu, ...router }),
+  ({ menu, router }: IStore) => ({
+    ...menu,
+    ...router
+  }),
   Actions
 )(Menu);
 

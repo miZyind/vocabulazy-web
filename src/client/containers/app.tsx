@@ -1,7 +1,6 @@
 // Node module
 import React from 'react';
 import { connect } from 'react-redux';
-import { hot } from 'react-hot-loader';
 // Model
 import { IStore } from '@models/index';
 // Action
@@ -10,10 +9,7 @@ import { Actions } from '@actions/layout';
 import Routes from '@routes/index';
 import Menu from '@containers/menu';
 
-type Props = IStore & typeof Actions & {
-  name: string;
-  version: string;
-};
+type Props = Pick<IStore, 'layout'> & typeof Actions;
 
 class App extends React.Component<Props> {
   public componentWillMount() {
@@ -31,7 +27,7 @@ class App extends React.Component<Props> {
   }
 }
 
-export default hot(module)(connect(
+export default connect(
   ({ layout }: IStore) => ({ layout }),
   Actions
-)(App));
+)(App);
