@@ -12,10 +12,10 @@ const hmrMiddleware = (): Middleware => {
       middleware = await koaWebpack({
         config,
         devMiddleware: {
-          logLevel: 'silent',
+          logLevel: 'error',
           publicPath: process.env.APP_PATH!
         },
-        hotClient: { logLevel: 'silent' }
+        hotClient: { logLevel: 'error' }
       });
     }
     return middleware(ctx, next);

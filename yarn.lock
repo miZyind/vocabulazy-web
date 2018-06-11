@@ -108,6 +108,15 @@
     "@types/koa" "*"
     "@types/koa-send" "*"
 
+"@types/koa-webpack@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@types/koa-webpack/-/koa-webpack-5.0.1.tgz#dd239c0d1e352cae206c8cd0fc308329abc0c20f"
+  dependencies:
+    "@types/koa" "*"
+    "@types/webpack" "*"
+    "@types/webpack-dev-middleware" "*"
+    "@types/webpack-hot-client" "*"
+
 "@types/koa@*", "@types/koa@^2.0.46":
   version "2.0.46"
   resolved "https://registry.yarnpkg.com/@types/koa/-/koa-2.0.46.tgz#24bc3cd405d10fcde81f876cd8285b44d4ddc3e9"
@@ -118,6 +127,16 @@
     "@types/http-assert" "*"
     "@types/keygrip" "*"
     "@types/koa-compose" "*"
+    "@types/node" "*"
+
+"@types/loglevel@*":
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/@types/loglevel/-/loglevel-1.5.3.tgz#adfce55383edc5998a2170ad581b3e23d6adb5b8"
+
+"@types/memory-fs@*":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@types/memory-fs/-/memory-fs-0.3.1.tgz#5cb5a1df4d977fd43edd3f05e0fd1a8a06b0275e"
+  dependencies:
     "@types/node" "*"
 
 "@types/mime@*":
@@ -207,11 +226,27 @@
   dependencies:
     source-map "^0.6.1"
 
+"@types/webpack-dev-middleware@*":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@types/webpack-dev-middleware/-/webpack-dev-middleware-2.0.1.tgz#516d953602d9e8ac72ca1196969969d580d4b0a6"
+  dependencies:
+    "@types/connect" "*"
+    "@types/loglevel" "*"
+    "@types/memory-fs" "*"
+    "@types/webpack" "*"
+
 "@types/webpack-env@^1.13.6":
   version "1.13.6"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.6.tgz#128d1685a7c34d31ed17010fc87d6a12c1de6976"
 
-"@types/webpack@^4.4.0":
+"@types/webpack-hot-client@*":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/webpack-hot-client/-/webpack-hot-client-3.0.1.tgz#8dc62ccd8cd2416d56f1e3965ae41fa01d663e92"
+  dependencies:
+    "@types/node" "*"
+    "@types/webpack" "*"
+
+"@types/webpack@*", "@types/webpack@^4.4.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.4.0.tgz#c0551b772be241d786c0548812dd75a932f8efb4"
   dependencies:
