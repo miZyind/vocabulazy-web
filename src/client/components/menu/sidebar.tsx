@@ -5,14 +5,12 @@ import styled from 'styled-components';
 import Bind from 'lodash-decorators/bind';
 import { NavLink } from 'react-router-dom';
 import { Sidebar as SidebarSrc, Menu, Button } from 'semantic-ui-react';
-// Modal
-import { Mode } from '@models/sign-modal';
 
 type Props = {
   className?: string;
   location: Location;
   visible: boolean;
-  openModal: (mode: Mode) => void;
+  openModal: (isSignInMode: boolean) => void;
 };
 
 class Sidebar extends React.PureComponent<Props> {
@@ -57,7 +55,7 @@ class Sidebar extends React.PureComponent<Props> {
           <Button icon='bookmark' content='我的筆記' compact />
         </Menu.Item>
         <Menu.Item
-          className='login-item'
+          className='sign-in'
           fitted='horizontally'
           data-mode='sign-in'
           onClick={this.handleClick}
@@ -65,7 +63,7 @@ class Sidebar extends React.PureComponent<Props> {
           <Button icon='sign in' content='登入' compact />
         </Menu.Item>
         <Menu.Item
-          className='signup-item'
+          className='sign-up'
           fitted='horizontally'
           data-mode='sign-up'
           onClick={this.handleClick}
@@ -100,14 +98,19 @@ export default styled(Sidebar)`
       background-color: unset;
       font-family: 'Noto Sans TC', sans-serif;
     }
-    .login-item {
+    .sign-in {
       cursor: pointer;
-      &:hover { background: rgba(255, 255, 255, 0.08); }
+      border-bottom: unset;
+      background-color: #434A54 !important;
+      &:hover { filter: brightness(110%); }
+      button { color: white !important; }
     }
-    .signup-item {
+    .sign-up {
       cursor: pointer;
-      background-color: #434A54;
-      &:hover { background-color: #555E6B; }
+      border-bottom: unset;
+      background-color: #FECE55 !important;
+      &:hover { filter: brightness(110%); }
+      button { color: #434A54; }
     }
   }
 `;

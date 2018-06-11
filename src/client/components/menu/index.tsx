@@ -39,7 +39,7 @@ class Menu extends React.PureComponent<Props> {
     return (
       <>
         <SignModal {...signModal} doLogin={closeModal} switchMode={switchMode} closeModal={closeModal} />
-        <Grid className={className} as={MenuSrc} attached='top'>
+        <Grid className={className} as={MenuSrc}>
           {menu}
         </Grid>
         <SidebarPushable style={{ minHeight: '500px' }}>
@@ -63,6 +63,7 @@ class Menu extends React.PureComponent<Props> {
 export default styled(Menu)`
   &&&& {
     border: none;
+    margin: unset;
     border-radius: unset;
     border-color: #1ABC9C;
     .ui.menu .item { padding: 0.5rem; }

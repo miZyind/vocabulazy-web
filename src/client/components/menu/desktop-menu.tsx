@@ -111,11 +111,16 @@ export default styled(DesktopMenu)`
       i { background-color: rgba(0, 0, 0, 0.3); }
     }
     .login-btn {
-      &:hover { background: rgba(255, 255, 255, 0.3); }
+      color: white;
+      transition: filter 0.3s;
+      background-color: #434A54;
+      &:hover { filter: brightness(110%); }
     }
     .signup-btn {
-      background-color: #434A54;
-      &:hover { background-color: #555E6B; }
+      color: #434A54;
+      transition: filter 0.3s;
+      background-color: #FECE55;
+      &:hover { filter: brightness(110%); }
     }
   }
 `;

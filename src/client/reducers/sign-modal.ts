@@ -4,7 +4,7 @@ import { ActionTypes, Actions } from '@actions/sign-modal';
 import { ISignModal } from '@models/sign-modal';
 
 const initState: ISignModal = {
-  isOpen: true,
+  isOpen: false,
   isSignInMode: true
 };
 

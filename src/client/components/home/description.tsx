@@ -68,12 +68,8 @@ export default styled(Description)`
     }
     .block {
       text-align: center;
-      .header {
-        color: white;
-      }
-      h1 {
-        font-size: 3.5rem;
-      }
+      .header { color: white; }
+      h1 { font-size: 3.5rem; }
       h2 {
         font-size: 1.5rem;
         font-family: 'Noto Sans TC', sans-serif;
@@ -81,26 +77,26 @@ export default styled(Description)`
       .ui.button {
         width: 160px;
         height: 44px;
+        color: #434A54;
         margin-top: 10px;
         font-weight: 500;
         font-size: 1.2rem;
         line-height: 1.2rem;
         border-radius: unset;
+        background-color: #FECE55;
         font-family: 'Noto Sans TC', sans-serif;
       }
     }
     .ui.images {
       right: 0;
       bottom: 0;
-      position: absolute;
       margin: 0 10px;
+      position: absolute;
       .ui.inline.image {
         width: 10rem;
         margin: 10px;
         transition: filter 0.3s;
-        &:hover {
-          filter: brightness(110%);
-        }
+        &:hover { filter: brightness(110%); }
      }
     }
   }

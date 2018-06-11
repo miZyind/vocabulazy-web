@@ -1,6 +1,6 @@
 // Node module
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { Transition, Header, Grid, Input, Button, Dimmer, Divider } from 'semantic-ui-react';
 
 type Props = {
@@ -39,8 +39,9 @@ class SignModal extends React.PureComponent<Props> {
               <Grid.Column textAlign='center'>
                 <Button
                   className='login'
-                  content={contentName}
+                  icon='check'
                   basic
+                  disabled
                   onClick={doLogin}
                 />
               </Grid.Column>
@@ -79,14 +80,14 @@ class SignModal extends React.PureComponent<Props> {
 
 const signInColor = `#1ABC9C`;
 const signUpColor = `#FECE55`;
-const foreColor = `rgba(0, 0, 0, 0.54)`;
+const foreColor = `#434A54`;
 const fontFamily = `'Noto Sans TC', sans-serif`;
 const ease = `cubic-bezier(0.600, 0.040, 0.980, 0.335)`;
 
 export default styled(SignModal)`
   &&& {
     width: 250px;
-    border-radius: 1%;
+    border-radius: 2%;
     position: relative;
     background-color: ${signInColor};
     .background {
@@ -94,6 +95,7 @@ export default styled(SignModal)`
       height: 100%;
       padding: unset;
       overflow: hidden;
+      border-radius: 2%;
       position: absolute;
       &:before {
         content: '';
@@ -108,6 +110,7 @@ export default styled(SignModal)`
     .ui.header {
       z-index: 0;
       border: unset;
+      margin: unset !important;
       transition: color 0.5s ${ease};
       padding: 1.5rem 2rem 0.5rem 2rem;
       font-family: ${fontFamily};
@@ -129,12 +132,8 @@ export default styled(SignModal)`
         box-shadow: unset;
         filter: brightness(110%);
       }
-      &:focus {
-        box-shadow: unset;
-      }
-      &.login {
-        transition: color 0.5s ${ease}, background-color 0.5s ${ease};
-      }
+      &:focus { box-shadow: unset; }
+      &.login { transition: color 0.5s ${ease}, background-color 0.5s ${ease}; }
       &.facebook {
         color: white !important;
         background-color: #3B5998 !important;
@@ -144,9 +143,7 @@ export default styled(SignModal)`
         background-color: #DD4B39 !important;
       }
     }
-    .row {
-      padding: 0.5rem 0 !important;
-    }
+    .row { padding: 0.5rem 0 !important; }
     .switch {
       top: 5px;
       right: -30px;
@@ -159,9 +156,7 @@ export default styled(SignModal)`
       position: absolute;
       border-radius: 50%;
       transition: filter 0.3s, color 0.5s ${ease}, background-color 0.5s ${ease};
-      &:hover {
-        filter: brightness(110%);
-      }
+      &:hover { filter: brightness(110%); }
     }
     &.sign-in {
       .background {
@@ -172,9 +167,7 @@ export default styled(SignModal)`
           right: calc(-60px / 2);
         }
       }
-      .ui.header {
-        color: white;
-      }
+      .ui.header { color: white; }
       .ui.basic.button.login {
         color: ${foreColor} !important;
         background-color: ${signUpColor} !important;
@@ -193,9 +186,7 @@ export default styled(SignModal)`
           right: calc(-900px / 2);
         }
       }
-      .ui.header {
-        color: ${foreColor};
-      }
+      .ui.header { color: ${foreColor}; }
       .ui.basic.button.login {
         color: white !important;
         background-color: ${signInColor} !important;
