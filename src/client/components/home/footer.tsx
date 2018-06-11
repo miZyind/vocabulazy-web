@@ -82,9 +82,8 @@ export default styled(Footer)`
     width: 100%;
     padding: 2rem;
     margin: unset;
-    a {
-      color: unset;
-    }
+    background-color: white;
+    a { color: unset; }
     .ui.header {
       white-space: nowrap;
       font-family: 'Noto Sans TC', sans-serif;

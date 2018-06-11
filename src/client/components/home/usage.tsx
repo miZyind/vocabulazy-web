@@ -25,21 +25,18 @@ const Usage = ({ className, isMobileDisplay }: Props) => (
 export default styled(Usage)`
   &&& {
     margin: unset;
+    background-color: white;
     border-bottom: 1px solid #979797;
     .column.video {
       padding: 2rem 3rem !important;
-      @media only screen and (max-width: 767px) {
-        padding: unset !important;
-      }
+      @media only screen and (max-width: 767px) { padding: unset !important; }
     }
     .info {
       display: flex;
       align-items: center;
       justify-content: center;
       padding: unset;
-      .ui.header {
-        font-family: 'Noto Sans TC', sans-serif;
-      }
+      .ui.header { font-family: 'Noto Sans TC', sans-serif; }
     }
   }
 `;

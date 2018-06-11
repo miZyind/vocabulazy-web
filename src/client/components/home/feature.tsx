@@ -40,9 +40,7 @@ export default styled(Feature)`
     margin: unset;
     background-color: #d8d8d8;
     border-bottom: 1px solid #979797;
-    .ui.header {
-      font-family: 'Noto Sans TC', sans-serif;
-    }
+    .ui.header { font-family: 'Noto Sans TC', sans-serif; }
     .row.title>.column {
       padding-top: 1.5rem !important;
       padding-bottom: 1.5rem !important;

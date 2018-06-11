@@ -2,20 +2,20 @@
 import React from 'react';
 import { Location } from 'history';
 import styled from 'styled-components';
+import Bind from 'lodash-decorators/bind';
 import { NavLink } from 'react-router-dom';
-import { Sidebar as SidebarSrc, Menu, MenuItemProps, Button } from 'semantic-ui-react';
+import { Sidebar as SidebarSrc, Menu, Button } from 'semantic-ui-react';
 
 type Props = {
   className?: string;
   location: Location;
-  sideBarVisible: boolean;
-  login: MenuItemProps['onClick'];
-  signup: MenuItemProps['onClick'];
+  visible: boolean;
+  openModal: (isSignInMode: boolean) => void;
 };
 
 class Sidebar extends React.PureComponent<Props> {
   public render() {
-    const { className, location, sideBarVisible, login, signup } = this.props;
+    const { className, location, visible } = this.props;
     return (
       <SidebarSrc
         className={className}
@@ -24,7 +24,7 @@ class Sidebar extends React.PureComponent<Props> {
         inverted
         width='thin'
         animation='overlay'
-        visible={sideBarVisible}
+        visible={visible}
         borderless
       >
         <Menu.Item
@@ -54,20 +54,41 @@ class Sidebar extends React.PureComponent<Props> {
         >
           <Button icon='bookmark' content='我的筆記' compact />
         </Menu.Item>
-        <Menu.Item className='login-item' fitted='horizontally' onClick={login}>
+        <Menu.Item
+          className='sign-in'
+          fitted='horizontally'
+          data-mode='sign-in'
+          onClick={this.handleClick}
+        >
           <Button icon='sign in' content='登入' compact />
         </Menu.Item>
-        <Menu.Item className='signup-item' fitted='horizontally' onClick={signup}>
+        <Menu.Item
+          className='sign-up'
+          fitted='horizontally'
+          data-mode='sign-up'
+          onClick={this.handleClick}
+        >
           <Button icon='add user' content='註冊' compact />
         </Menu.Item>
       </SidebarSrc>
     );
   }
+
+  @Bind
+  private handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    const { mode } = e.currentTarget.dataset;
+    if (mode) {
+      const isSignInMode = mode === 'sign-in';
+      this.props.openModal(isSignInMode);
+    }
+  }
 }
 
 export default styled(Sidebar)`
   &&&& {
+    position: fixed;
     background-color: #666C78;
+    margin-top: 3.5rem !important;
     .item {
       padding: 0.5rem 0;
       border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
@@ -79,14 +100,19 @@ export default styled(Sidebar)`
       background-color: unset;
       font-family: 'Noto Sans TC', sans-serif;
     }
-    .login-item {
+    .sign-in {
       cursor: pointer;
-      &:hover { background: rgba(255, 255, 255, 0.08); }
+      border-bottom: unset;
+      background-color: #434A54 !important;
+      &:hover { filter: brightness(110%); }
+      button { color: white !important; }
     }
-    .signup-item {
+    .sign-up {
       cursor: pointer;
-      background-color: #434A54;
-      &:hover { background-color: #555E6B; }
+      border-bottom: unset;
+      background-color: #FECE55 !important;
+      &:hover { filter: brightness(110%); }
+      button { color: #434A54; }
     }
   }
 `;

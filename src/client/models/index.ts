@@ -1,6 +1,7 @@
 // Node module
 import { RouterState } from 'react-router-redux';
 // Model
+import { ILayout } from '@models/layout';
 import { IMenu } from '@models/menu';
 
 interface IStore {
@@ -9,11 +10,6 @@ interface IStore {
   menu: IMenu;
 }
 
-interface ILayout {
-  displayType: 'mobile' | 'tablet' | 'desktop';
-}
-
 export {
-  IStore,
-  ILayout
+  IStore
 };
