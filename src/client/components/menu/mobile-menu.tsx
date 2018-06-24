@@ -2,23 +2,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Grid, Menu, MenuItemProps, Icon } from 'semantic-ui-react';
+import { Grid, Menu, Icon } from 'semantic-ui-react';
 // Component
 import Logo from './logo';
 
 type Props = {
   className?: string;
-  toggleSidebar: MenuItemProps['onClick'];
-  openSearchPanel: MenuItemProps['onClick'];
+  onSidebarItemClick: () => void;
+  onSearchItemClick: () => void;
 };
 
 class MobileMenu extends React.PureComponent<Props> {
   public render() {
-    const { className, toggleSidebar, openSearchPanel } = this.props;
+    const { className, onSidebarItemClick, onSearchItemClick } = this.props;
     return (
       <Grid.Column className={className} width='16' >
         <Grid className='mobile-menu' as={Menu} inverted borderless>
-          <Grid.Column className='icon-column' as={Menu.Item} width='2' onClick={toggleSidebar} stretched>
+          <Grid.Column className='icon-column' as={Menu.Item} width='2' onClick={onSidebarItemClick} stretched>
             <Icon name='sidebar' />
           </Grid.Column>
           <Grid.Column className='logo-column' width='12'>
@@ -26,7 +26,7 @@ class MobileMenu extends React.PureComponent<Props> {
               <Logo />
             </Menu.Item>
           </Grid.Column>
-          <Grid.Column className='icon-column' as={Menu.Item} width='2' onClick={openSearchPanel} stretched>
+          <Grid.Column className='icon-column' as={Menu.Item} width='2' onClick={onSearchItemClick} stretched>
             <Icon name='search' />
           </Grid.Column>
         </Grid>
