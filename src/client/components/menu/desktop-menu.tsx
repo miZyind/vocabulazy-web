@@ -11,7 +11,7 @@ import Logo from './logo';
 type Props = {
   className?: string;
   location: Location;
-  openModal: (isSignInMode: boolean) => void;
+  onSignItemClick: (isSignInMode: boolean) => void;
 };
 
 class DesktopMenu extends React.PureComponent<Props> {
@@ -86,7 +86,7 @@ class DesktopMenu extends React.PureComponent<Props> {
     const { mode } = e.currentTarget.dataset;
     if (mode) {
       const isSignInMode = mode === 'sign-in';
-      this.props.openModal(isSignInMode);
+      this.props.onSignItemClick(isSignInMode);
     }
   }
 }

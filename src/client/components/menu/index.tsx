@@ -2,7 +2,7 @@
 import React from 'react';
 import { Location } from 'history';
 import styled from 'styled-components';
-import { Bind } from 'lodash-decorators';
+import Bind from 'lodash-decorators/bind';
 import { Grid, Menu as MenuSrc, SidebarPushable, SidebarPusher } from 'semantic-ui-react';
 // Component
 import SignModal from './sign-modal';
@@ -33,8 +33,8 @@ class Menu extends React.PureComponent<Props> {
     } = this.props;
 
     const menu = isMobileDisplay
-      ? <MobileMenu toggleSidebar={toggleSidebar} openSearchPanel={this.openSearchPanel} />
-      : <DesktopMenu location={location} openModal={openModal} />;
+      ? <MobileMenu onSidebarItemClick={toggleSidebar} onSearchItemClick={this.openSearchPanel} />
+      : <DesktopMenu location={location} onSignItemClick={openModal} />;
 
     const isSidebarOpened = isMobileDisplay && sidebar.visible;
 
@@ -45,9 +45,14 @@ class Menu extends React.PureComponent<Props> {
           <Sidebar
             location={location}
             visible={isSidebarOpened}
-            openModal={openModal}
+            onSignItemClick={openModal}
+            onCloseItemClick={toggleSidebar}
           />
-          <SidebarPusher dimmed={isSidebarOpened} onClick={isSidebarOpened ? toggleSidebar : null}>
+          <SidebarPusher
+            id='pusher'
+            dimmed={isSidebarOpened}
+            onClick={isSidebarOpened ? this.onDimmerClick : null}
+          >
             <Grid as={MenuSrc} fixed='top'>
               {menu}
             </Grid>
@@ -63,6 +68,13 @@ class Menu extends React.PureComponent<Props> {
   @Bind
   private openSearchPanel() {
     // TODO:
+  }
+
+  @Bind
+  private onDimmerClick({ target }: React.MouseEvent<HTMLDivElement>) {
+    if ((target as HTMLDivElement).id === 'pusher') {
+      this.props.toggleSidebar();
+    }
   }
 }
 
