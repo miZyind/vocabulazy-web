@@ -1,21 +1,18 @@
 ![VocabuLazy](https://github.com/miZyind/vocabulazy/blob/assets/banner.png)
 
-# VocabuLazy
+# VocabuLazy Web
 
-[![Frontend](https://img.shields.io/badge/Frontend-React-008BB8.svg?style=flat-square)](https://facebook.github.io/react)
-[![Backend](https://img.shields.io/badge/Backend-Koa-orange.svg?style=flat-square)](http://koajs.com)
-[![Style](https://img.shields.io/badge/Style-Semantic_UI-yellowgreen.svg?style=flat-square)](https://semantic-ui.com)
+[![Framework](https://img.shields.io/badge/Framework-NextJS-008BB8.svg?style=flat-square)](https://nextjs.org)
 [![Language](https://img.shields.io/badge/Language-TypeScript-blue.svg?style=flat-square)](https://www.typescriptlang.org)
-[![Bundler](https://img.shields.io/badge/Bundler-Webpack-2B3A42.svg?style=flat-square)](https://webpack.js.org)
 
-## Miscellaneous
+## 💠 Requirement
 
-This project was bootstrapped with [RKSTWB](https://github.com/miZyind/rkstwb).
+- NodeJS >= 12
 
-## Author
+## 🖋 Author
 
 miZyind <mizyind@gmail.com>
 
-## LICENSE
+## 📇 License
 
 Licensed under the [MIT](LICENSE) License.
