@@ -4,6 +4,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
     /* Strict Type-Checking Options */
     "strict": true,
     "skipLibCheck": true,
@@ -28,6 +29,7 @@
     "noEmit": true,
     "isolatedModules": true,
     "sourceMap": true,
+    "allowJs": true,
     /* Plugins */
     "plugins": [{ "name": "typescript-styled-plugin" }]
   },
