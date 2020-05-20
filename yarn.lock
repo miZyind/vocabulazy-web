@@ -3180,10 +3180,10 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-eslint-config-mizyind@^1.0.20:
-  version "1.0.20"
-  resolved "https://registry.yarnpkg.com/eslint-config-mizyind/-/eslint-config-mizyind-1.0.20.tgz#d9207ef55e3713fb97ea936fefc7c0f04e8b6973"
-  integrity sha512-muHYe1vNrLOgvtDgFgRv+EQyYlNAqMYfbAtNyi52F9e0Ms7pl7K6BXSRVD61yQjSgi8R9CMa+wOOojJb1zDiLQ==
+eslint-config-mizyind@^1.0.21:
+  version "1.0.21"
+  resolved "https://registry.yarnpkg.com/eslint-config-mizyind/-/eslint-config-mizyind-1.0.21.tgz#8d3a58154a0ff1787a0fd67036197dbc9b49733b"
+  integrity sha512-cChRsdtzW7oDKGosBsXm5GrO9XBoCEx1o/XSdEtgM8ZmcyG0Y/bx3McIoIBts2nlCNQYJ7wwRpEeb0DXZ8GqwQ==
 
 eslint-config-prettier@^6.11.0:
   version "6.11.0"
