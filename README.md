@@ -2,12 +2,13 @@
 
 # VocabuLazy Web
 
-[![Framework](https://img.shields.io/badge/Framework-NextJS-008BB8.svg?style=flat-square)](https://nextjs.org)
-[![Language](https://img.shields.io/badge/Language-TypeScript-blue.svg?style=flat-square)](https://www.typescriptlang.org)
+[![Framework](https://img.shields.io/badge/Framework-NextJS-orange.svg?style=flat-square)](https://nextjs.org)
+[![Language](https://img.shields.io/badge/Language-TypeScript-294E80.svg?style=flat-square)](https://www.typescriptlang.org)
+[![Style](https://img.shields.io/badge/Style-BlueprintJS-blue.svg?style=flat-square)](https://blueprintjs.com)
 
 ## 💠 Requirement
 
-- NodeJS >= 12
+- NodeJS >= 14
 
 ## 🖋 Author
 
