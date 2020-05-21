@@ -5,12 +5,12 @@ import { Button, Classes, Navbar } from '@blueprintjs/core';
 
 const Index = ({ className }: StyledProps) => (
   <div className={className}>
-    <Navbar className='bp3-dark' fixedToTop>
+    <Navbar className={Classes.DARK} fixedToTop>
       <Navbar.Group>
         <Navbar.Heading>Vocabulazy</Navbar.Heading>
         <Navbar.Divider />
-        <Button className={Classes.MINIMAL} icon='home' text='Home' />
-        <Button className={Classes.MINIMAL} icon='document' text='Files' />
+        <Button icon='home' text='Home' minimal />
+        <Button icon='document' text='Files' minimal />
       </Navbar.Group>
     </Navbar>
   </div>
