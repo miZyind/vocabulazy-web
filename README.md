@@ -2,9 +2,14 @@
 
 # VocabuLazy Web
 
-[![Framework](https://img.shields.io/badge/Framework-NextJS-orange.svg?style=flat-square)](https://nextjs.org)
-[![Language](https://img.shields.io/badge/Language-TypeScript-294E80.svg?style=flat-square)](https://www.typescriptlang.org)
-[![Style](https://img.shields.io/badge/Style-BlueprintJS-blue.svg?style=flat-square)](https://blueprintjs.com)
+[![NodeJS](https://img.shields.io/badge/->=14-339933?style=for-the-badge&label=&logo=node.js&logoColor=fff)](https://nodejs.org)
+[![NextJS](https://img.shields.io/github/package-json/dependency-version/mizyind/vocabulazy-web/next?style=for-the-badge&label=&color=e0234e&logo=next.js)](https://nextjs.org)
+[![BlueprintJS](https://img.shields.io/github/package-json/dependency-version/mizyind/vocabulazy-web/@blueprintjs/core?style=for-the-badge&label=&color=0a2d59&logo=css3)](https://blueprintjs.com)
+[![TypeScript](https://img.shields.io/github/package-json/dependency-version/mizyind/vocabulazy-web/dev/typescript?style=for-the-badge&label=&color=007acc&logo=typescript)](https://www.typescriptlang.org)
+[![React](https://img.shields.io/github/package-json/dependency-version/mizyind/vocabulazy-web/react?style=for-the-badge&label=&color=61dafb&logo=react&logoColor=fff)](https://reactjs.org)
+[![ESLint](https://img.shields.io/github/package-json/dependency-version/mizyind/vocabulazy-web/dev/eslint?style=for-the-badge&label=&color=4b32c3&logo=eslint&logoColor=fff)](https://eslint.org)
+[![Prettier](https://img.shields.io/github/package-json/dependency-version/mizyind/vocabulazy-web/dev/prettier?style=for-the-badge&label=&color=f7b93e&logo=prettier&logoColor=fff)](https://prettier.io)
+[![License](https://img.shields.io/badge/LIC.-mit-404040?style=for-the-badge&labelColor=000)](https://github.com/miZyind/vocabulazy-web/blob/master/LICENSE)
 
 ## 💠 Requirement
 
