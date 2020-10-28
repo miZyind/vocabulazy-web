@@ -11,9 +11,7 @@
 [![ESLint](https://img.shields.io/npm/dependency-version/eslint-plugin-mizyind/eslint?style=for-the-badge&label=&color=4b32c3&logo=eslint&logoColor=fff)](https://eslint.org)
 [![Prettier](https://img.shields.io/npm/dependency-version/eslint-plugin-mizyind/prettier?style=for-the-badge&label=&color=f7b93e&logo=prettier&logoColor=fff)](https://prettier.io)
 
-## 💠 Requirement
-
-- NodeJS >= 14
+A most useful app for learning English vocabulary in the world!
 
 ## 🖋 Author
 
