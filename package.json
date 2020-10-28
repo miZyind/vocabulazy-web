@@ -2,12 +2,13 @@
   "name": "vocabulazy-web",
   "version": "1.0.0",
   "description": "Most useful app for learning english vocabulary in the world!",
-  "repository": "git@github.com:miZyind/vocabulazy-web.git",
   "author": "miZyind <mizyind@gmail.com>",
   "license": "MIT",
+  "repository": "git@github.com:miZyind/vocabulazy-web.git",
   "homepage": "https://vocabulazy.io",
-  "bugs": {
-    "url": "https://github.com/miZyind/vocabulazy-web/issues"
+  "bugs": "https://github.com/miZyind/vocabulazy-web/issues",
+  "engines": {
+    "node": ">=14"
   },
   "scripts": {
     "dev": "next dev",
@@ -15,35 +16,27 @@
     "start": "next start",
     "lint": "eslint \"*/**/*.{ts,tsx}\" --max-warnings 0"
   },
-  "engines": {
-    "node": ">=14"
-  },
   "dependencies": {
-    "@blueprintjs/core": "^3.33.0",
-    "next": "^9.5.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "@blueprintjs/core": "^3.35.0",
+    "next": "^10.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@types/node": "^14.11.8",
-    "@types/react": "^16.9.52",
-    "@types/react-dom": "^16.9.8",
+    "@types/node": "^14.14.5",
+    "@types/react": "^16.9.54",
+    "@types/react-dom": "^16.9.9",
     "@types/styled-components": "^5.1.4",
-    "@typescript-eslint/eslint-plugin": "^4.4.0",
-    "@typescript-eslint/parser": "^4.4.0",
     "babel-plugin-styled-components": "^1.11.1",
-    "eslint": "^7.11.0",
-    "eslint-config-prettier": "^6.12.0",
-    "eslint-plugin-mizyind": "^1.1.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.21.4",
+    "eslint-plugin-mizyind": "^2.0.2",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.3.0",
-    "lint-staged": "^10.4.0",
-    "prettier": "^2.1.2",
-    "typescript": "^4.0.3",
+    "lint-staged": "^10.5.0",
+    "typescript": "^4.0.5",
     "typescript-styled-plugin": "^0.15.0"
   },
   "babel": {
@@ -60,37 +53,7 @@
     ]
   },
   "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true,
-      "browser": true,
-      "jest": true
-    },
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "project": "tsconfig.json",
-      "sourceType": "module",
-      "ecmaVersion": 2020,
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    },
-    "plugins": [
-      "@typescript-eslint",
-      "mizyind"
-    ],
     "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/all",
-      "prettier/@typescript-eslint",
-      "plugin:prettier/recommended",
       "plugin:mizyind/react"
     ]
   },
