@@ -1,38 +1,48 @@
+/* TSConfig Reference https://www.typescriptlang.org/tsconfig */
 {
+  /* File Inclusion */
+  "include": ["**/*"],
+  "exclude": ["node_modules", "next-env.d.ts"],
   "compilerOptions": {
-    /* Basic Options */
+    /* Project Options */
     "target": "ESNext",
     "module": "ESNext",
     "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    /* Strict Type-Checking Options */
+    "noEmit": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "removeComments": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "plugins": [{ "name": "typescript-styled-plugin" }],
+    /* Strict Checks */
     "strict": true,
-    "skipLibCheck": true,
-    /* Additional Checks */
+    /* Module Resolution */
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "paths": {
+      "#components/*": ["components/*"],
+      "#configs/*": ["configs/*"],
+      "#contexts/*": ["contexts/*"],
+      "#theme": ["theme"],
+      "#utils/*": ["utils/*"]
+    },
+    "typeRoots": ["node_modules/@types", "@types"],
+    /* Linter Checks */
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true,
-    /* Module Resolution Options */
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    /* Experimental Options */
-    "experimentalDecorators": true,
+    /* Experimental */
     "emitDecoratorMetadata": true,
-    /* Compilation Options */
+    "experimentalDecorators": true,
+    /* Advanced */
+    "forceConsistentCasingInFileNames": true,
     "preserveConstEnums": true,
-    "removeComments": true,
-    "noEmit": true,
-    "isolatedModules": true,
-    "sourceMap": true,
-    "allowJs": true,
-    /* Plugins */
-    "plugins": [{ "name": "typescript-styled-plugin" }]
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+    "resolveJsonModule": true,
+    "skipLibCheck": true
+  }
 }

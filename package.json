@@ -2,43 +2,55 @@
   "name": "vocabulazy-web",
   "version": "1.0.0",
   "description": "A most useful app for learning English vocabulary in the world!",
+  "repository": "git@github.com:miZyind/vocabulazy-web.git",
   "author": "miZyind <mizyind@gmail.com>",
   "license": "MIT",
-  "repository": "git@github.com:miZyind/vocabulazy-web.git",
-  "homepage": "https://vocabulazy.io",
+  "homepage": "https://vocabulazy.org",
   "bugs": "https://github.com/miZyind/vocabulazy-web/issues",
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "scripts": {
     "prepare": "husky install",
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn lint && next build",
+    "export": "next export",
     "start": "next start",
-    "lint": "eslint \"*/**/*.{ts,tsx}\" --max-warnings 0"
+    "lint": "yarn lint:js && yarn lint:css",
+    "lint:js": "eslint \"*/**/*.{ts,tsx}\" --max-warnings 0",
+    "lint:css": "stylelint \"*/**/*.tsx\" --max-warnings 0"
   },
   "dependencies": {
-    "@blueprintjs/core": "^3.42.0",
-    "next": "^10.0.9",
+    "@blueprintjs/core": "^3.50.2",
+    "classnames": "^2.3.1",
+    "gsap": "^3.7.1",
+    "lodash": "^4.17.21",
+    "next": "^11.1.2",
+    "nookies": "^2.5.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.3.1",
+    "swr": "^1.0.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.0.1",
-    "@commitlint/config-conventional": "^12.0.1",
-    "@types/node": "^14.14.37",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.3",
-    "@types/styled-components": "^5.1.9",
-    "babel-plugin-styled-components": "^1.12.0",
-    "eslint-plugin-mizyind": "^2.2.0",
-    "eslint-plugin-react": "^7.23.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^5.2.0",
-    "lint-staged": "^10.5.4",
-    "typescript": "^4.2.3",
-    "typescript-styled-plugin": "^0.15.0"
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@types/lodash": "^4.14.173",
+    "@types/node": "^16.9.6",
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.14",
+    "babel-plugin-styled-components": "^1.13.2",
+    "eslint-plugin-mizyind": "^3.1.1",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "typescript": "^4.4.3",
+    "typescript-styled-plugin": "^0.18.1"
   },
   "babel": {
     "presets": [
@@ -55,7 +67,17 @@
   },
   "eslintConfig": {
     "extends": [
-      "plugin:mizyind/react"
+      "plugin:mizyind/next"
+    ]
+  },
+  "stylelint": {
+    "processors": [
+      "stylelint-processor-styled-components"
+    ],
+    "extends": [
+      "stylelint-config-recommended",
+      "stylelint-config-styled-components",
+      "stylelint-config-prettier"
     ]
   },
   "prettier": {
